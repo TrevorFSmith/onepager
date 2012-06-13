@@ -3,10 +3,10 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title></title>
+		<title>Seattle Signage</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="">
-		<meta name="author" content="">
+		<meta name="description" content="Commercial and non-commercial signs around the city of Seattle">
+		<meta name="author" content="Trevor F. Smith: http://trevor.smith.name/">
 
 		<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
 		<link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.css">
@@ -24,7 +24,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		  </a>
-		  <a class="brand" href="#">Project name</a>
+		  <a class="brand" href="#">Seattle Signage</a>
 		  <div class="nav-collapse">
 			<ul class="nav">
 			  <li class="active"><a href="#">Home</a></li>
@@ -44,6 +44,7 @@
 	<script src="json/json2.js"></script>
 	<script src="backbone-min.js"></script>
 	<script src="bootstrap/js/bootstrap-transition.js"></script>
+	<!--
 	<script src="bootstrap/js/bootstrap-alert.js"></script>
 	<script src="bootstrap/js/bootstrap-modal.js"></script>
 	<script src="bootstrap/js/bootstrap-dropdown.js"></script>
@@ -55,6 +56,21 @@
 	<script src="bootstrap/js/bootstrap-collapse.js"></script>
 	<script src="bootstrap/js/bootstrap-carousel.js"></script>
 	<script src="bootstrap/js/bootstrap-typeahead.js"></script>
+	-->
+
+	<script src="local_settings.js"></script>
 	<script src="index.js"></script>
+
+	<script type="text/html" id='aboutTemplate'>
+		<h1>About Seattle Signage:</h1>
+
+		<p>
+			This is a "one pager" web app by <a href="http://trevor.smith.name/">Trevor F. Smith</a>.
+		</p>
+		<p>
+		The map you're seeing combines data from <a href="http://data.seattle.gov">data.seattle.gov</a>'s Trade Permit source with Google Maps using one of their experimental FusionTables.
+		</p>
+	</script>
+
 	</body>
 </html>

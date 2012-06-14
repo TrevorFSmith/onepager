@@ -103,12 +103,13 @@ onepage.views.HomeView = Backbone.View.extend({
 
 onepage.views.AboutView = Backbone.View.extend({
 	className: 'routeView',
-	id: 'aboutView span12',
+	id: 'aboutView',
 	initialize: function(){
 		_.bindAll(this, 'render');
+		this.template = $("#aboutTemplate").html();
 	},
 	render: function(){
-		this.$el.append('<h1>About:</h1>');
+		this.$el.html(_.template(this.template, {}));
 		return this;
 	},
 });

@@ -57,9 +57,10 @@ onepage.views.AboutView = Backbone.View.extend({
 	id: 'aboutView',
 	initialize: function(){
 		_.bindAll(this, 'render');
+		this.template = $("#aboutTemplate").html();
 	},
 	render: function(){
-		this.$el.append('<h1>About:</h1>');
+		this.$el.html(_.template(this.template, {}));
 		return this;
 	},
 });

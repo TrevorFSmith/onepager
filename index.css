@@ -8,3 +8,4 @@ body {
 }
 
 #homeView { width: 100%; height: 40em;}
+#aboutView p { width: 30%; }

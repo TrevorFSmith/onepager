@@ -6,3 +6,11 @@ body {
   body {
   }
 }
+#aboutView p { width: 40%; }
+
+#rsvpPanel {
+	width: 32em;
+	height: 20em;
+	margin: 1em 0;
+	background-color: #999;
+}

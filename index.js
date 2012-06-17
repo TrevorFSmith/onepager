@@ -1,5 +1,6 @@
 var onepage = onepage || {};
 onepage.views = onepage.views || {};
+onepage.models = onepage.models || {};
 
 onepage.Router = Backbone.Router.extend({
 	routes: {
@@ -25,6 +26,14 @@ onepage.activateNav = function(hash){
 	$('a[href=' + hash + ']').parent().attr('class', 'active');
 }
 
+onepage.models.EBook = Backbone.Model.extend({
+	url: 'Cory_Doctorow_-_Makers_snip.txt',
+
+	parse: function(response){
+		console.log('response', response);
+	},
+});
+
 onepage.views.PageView = Backbone.View.extend({
 	id: 'pageView',
 
@@ -47,7 +56,10 @@ onepage.views.HomeView = Backbone.View.extend({
 		_.bindAll(this, 'render');
 	},
 	render: function(){
-		this.$el.append('<h1>Home:</h1>');
+		this.$el.append('<h1>"Makers" by Cory Doctorow</h1>');
+		this.rsvpPanel = $('<div id="rsvpPanel" />');
+		this.$el.append(this.rsvpPanel);
+		this.$el.append($('<div id="instructionsPanel">').text('Press the space bar to start and stop and the arrow keys to adjust speed.'));
 		return this;
 	},
 });

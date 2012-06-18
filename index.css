@@ -9,8 +9,10 @@ body {
 #aboutView p { width: 40%; }
 
 #rsvpPanel {
-	width: 32em;
-	height: 20em;
+	font-size: 4em;
+	width: 10em;
+	height: 5em; line-height: 5em;
 	margin: 1em 0;
 	background-color: #999;
+	text-align: center;
 }

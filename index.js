@@ -167,7 +167,7 @@ onepage.views.HomeView = Backbone.View.extend({
 		this.$el.append('<h1>"Makers" by Cory Doctorow</h1>');
 		this.rsvpPanel = $('<div id="rsvpPanel" />');
 		this.$el.append(this.rsvpPanel);
-		this.$el.append($('<div id="instructionsPanel">').text('Press the space bar to start and stop, "f" for faster, "s" for slowers.'));
+		this.$el.append($('<div id="instructionsPanel">').text('Press the space bar to start and stop, "f" for faster, "s" for slower.'));
 		return this;
 	},
 });

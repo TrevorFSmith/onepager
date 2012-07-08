@@ -47,7 +47,7 @@ onepage.views.HomeView = Backbone.View.extend({
 		_.bindAll(this, 'render');
 	},
 	render: function(){
-		this.$el.append('<h1>Home:</h1>');
+		this.$el.append($.el.h1('Home:'));
 		return this;
 	},
 });

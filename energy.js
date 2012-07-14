@@ -26,11 +26,15 @@ energy.LayerCollection = Backbone.Collection.extend({
 energy.createDefaultLayerCollection = function(){
 	var collection = new energy.LayerCollection();
 	collection.add(new energy.Layer({ name:'Layer 2: Emotional',
-		size:1.32,
+		size:1.6,
+		color:'#F5F',
+	}));
+	collection.add(new energy.Layer({ name:'Layer 2: Emotional',
+		size:1.25,
 		color:'#F50',
 	}));
 	collection.add(new energy.Layer({ name:'Layer 1: Etheric',
-		size:1.16,
+		size:1,
 		color:'#055',
 	}));
 
@@ -49,6 +53,8 @@ energy.LayerCollectionView = Backbone.View.extend({
 	render: function(){
 		this.$el.empty();
 		var svg = this.$el.svg().svg('get');
+		//svg.line(svg._width() / 2, 0, svg._width() / 2, svg._height(), {stroke: '#FDD', strokeWidth: 3})
+		//svg.line(0, svg._height() / 2, svg._width(), svg._height() / 2, {stroke: '#FDD', strokeWidth: 3})
 		for(var i=0; i < this.collection.length; i++){
 			this.layerViews[i].render(svg);
 		}
@@ -63,10 +69,16 @@ energy.LayerView = Backbone.View.extend({
 	render: function(svg){ 
 		// This is a little different than the usual Backbone render model.
 		// Instead of rendering to this.el using the DOM we render SVG into the SVG context passed as a parameter.
-		console.log(this, this.$el.width(), svg);
-		var layerGroup = svg.group(svg, this.id);
-		layerGroup.setAttribute('transform', 'translate(10, 10) scale(' + this.model.get('size') + ')');
-		window.g = layerGroup;
-		var path = svg.path(layerGroup, this.model.get('path'), {fill: '#FFF', 'fill-opacity': 0.5, stroke:this.model.get('color'), strokeWidth: 3});
+		var layerGroup = svg.group();
+		var path = svg.path(layerGroup, this.model.get('path'), {fill: '#FFF', 'fill-opacity': 0, stroke:this.model.get('color'), strokeWidth: 3});
+
+		var midX = svg._width() / 2.0;
+		var midY = svg._height() / 2.0;
+		var layerBBox = layerGroup.getBBox();
+		var drawX = midX - (layerBBox.width * this.model.get('size') / 2.0);
+		var drawY = midY - (layerBBox.height * this.model.get('size') / 2.0);
+		var transform = 'translate(' + drawX + ', ' + drawY + ') scale(' + this.model.get('size') + ')';
+		layerGroup.setAttribute('transform',  transform);
+		var layerBBox2 = layerGroup.getBBox();
 	}	
 })

@@ -34,7 +34,8 @@ onepage.views.PageView = Backbone.View.extend({
 		this.aboutView = new onepage.views.AboutView();
 		this.$el.append(this.aboutView.render().el);
 		this.homeView = new onepage.views.HomeView({collection:this.layerCollection});
-		this.$el.append(this.homeView.render().el);
+		this.$el.append(this.homeView.el);
+		this.homeView.render();
 	},
 
 	render: function(){
@@ -51,7 +52,8 @@ onepage.views.HomeView = Backbone.View.extend({
 	},
 	render: function(){
 		this.$el.empty()
-		this.$el.append(this.layerCollectionView.render().el);
+		this.$el.append(this.layerCollectionView.el);
+		this.layerCollectionView.render();
 		return this;
 	},
 });

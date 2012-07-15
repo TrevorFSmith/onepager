@@ -11,6 +11,7 @@ energy.Layer = Backbone.Model.extend({
 		this.initAttribute('grid', null);
 		this.initAttribute('shimmering', false);
 		this.initAttribute('colorBlobs', null);
+		this.initAttribute('opacity', 1);
 		this.initAttribute('path', energy.schmooPath);
 	},
 	initAttribute: function(name, defaultValue){
@@ -25,17 +26,40 @@ energy.LayerCollection = Backbone.Collection.extend({
 
 energy.createDefaultLayerCollection = function(){
 	var collection = new energy.LayerCollection();
-	collection.add(new energy.Layer({ name:'Layer 2: Emotional',
+	collection.add(new energy.Layer({ name:'Layer 7: Ketheric template',
+		size:4,
+		color:'#DDD',
+		opacity: 0.5,
+	}));
+	collection.add(new energy.Layer({ name:'Layer 6: Celestial',
+		size:3,
+		color:'#EEE',
+		opacity: 0.5,
+	}));
+	collection.add(new energy.Layer({ name:'Layer 5: Etheric template',
+		size:2.2,
+		color:'#DDD',
+		opacity: 0.5,
+	}));
+	collection.add(new energy.Layer({ name:'Layer 4: Astral',
+		size:1.9,
+		color:'#F00',
+		opacity: 0.5,
+	}));
+	collection.add(new energy.Layer({ name:'Layer 3: Mental',
 		size:1.6,
-		color:'#F5F',
+		color:'#FF0',
+		opacity: 0.5,
 	}));
 	collection.add(new energy.Layer({ name:'Layer 2: Emotional',
 		size:1.25,
 		color:'#F50',
+		opacity: 0.8,
 	}));
 	collection.add(new energy.Layer({ name:'Layer 1: Etheric',
 		size:1,
 		color:'#055',
+		opacity: 1,
 	}));
 
 	return collection;
@@ -69,15 +93,15 @@ energy.LayerView = Backbone.View.extend({
 	render: function(svg){ 
 		// This is a little different than the usual Backbone render model.
 		// Instead of rendering to this.el using the DOM we render SVG into the SVG context passed as a parameter.
-		var layerGroup = svg.group();
+		var layerGroup = svg.group(this.id, {opacity: this.model.get('opacity')});
 		var path = svg.path(layerGroup, this.model.get('path'), {fill: '#FFF', 'fill-opacity': 0, stroke:this.model.get('color'), strokeWidth: 3});
 
 		var midX = svg._width() / 2.0;
 		var midY = svg._height() / 2.0;
 		var layerBBox = layerGroup.getBBox();
 		var drawX = midX - (layerBBox.width * this.model.get('size') / 2.0);
-		var drawY = midY - (layerBBox.height * this.model.get('size') / 2.0);
-		var transform = 'translate(' + drawX + ', ' + drawY + ') scale(' + this.model.get('size') + ')';
+		var drawY = midY - (layerBBox.height * this.model.get('size') / 4.0);
+		var transform = 'translate(' + drawX + ', ' + drawY + ') scale(' + this.model.get('size') + ', ' + this.model.get('size') / 2.0 + ')';
 		layerGroup.setAttribute('transform',  transform);
 		var layerBBox2 = layerGroup.getBBox();
 	}	

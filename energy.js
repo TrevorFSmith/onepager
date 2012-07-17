@@ -9,6 +9,7 @@ energy.Layer = Backbone.Model.extend({
 		this.initAttribute('size', 1);
 		this.initAttribute('color', '#999');
 		this.initAttribute('grid', null);
+		this.initAttribute('blur', null);
 		this.initAttribute('shimmering', false);
 		this.initAttribute('colorBlobs', null);
 		this.initAttribute('opacity', 1);
@@ -40,26 +41,31 @@ energy.createDefaultLayerCollection = function(){
 		size:2.2,
 		color:'#DDD',
 		opacity: 0.5,
+		blur: 5,
 	}));
 	collection.add(new energy.Layer({ name:'Layer 4: Astral',
 		size:1.9,
 		color:'#F00',
 		opacity: 0.5,
+		blur: 4,
 	}));
 	collection.add(new energy.Layer({ name:'Layer 3: Mental',
 		size:1.6,
 		color:'#FF0',
 		opacity: 0.5,
+		blur: 3,
 	}));
 	collection.add(new energy.Layer({ name:'Layer 2: Emotional',
 		size:1.25,
 		color:'#F50',
 		opacity: 0.8,
+		blur: 2,
 	}));
 	collection.add(new energy.Layer({ name:'Layer 1: Etheric',
 		size:1,
 		color:'#055',
 		opacity: 1,
+		blur: 1,
 	}));
 
 	return collection;
@@ -94,15 +100,23 @@ energy.LayerView = Backbone.View.extend({
 		// This is a little different than the usual Backbone render model.
 		// Instead of rendering to this.el using the DOM we render SVG into the SVG context passed as a parameter.
 		var layerGroup = svg.group(this.id, {opacity: this.model.get('opacity')});
-		var path = svg.path(layerGroup, this.model.get('path'), {fill: '#FFF', 'fill-opacity': 0, stroke:this.model.get('color'), strokeWidth: 3});
 
+		var defs = svg.defs(layerGroup, this.id + '-defs');
+		var layerFilter = svg.filter(defs, this.id + '-filter', null,null,null,null, {'color-interpolation-filters':'sRGB'});
+		var gaussianBlur = svg.filters.gaussianBlur(layerFilter, null, null, this.model.get('blur') ? this.model.get('blur') :  0, {id:this.id + '-gblur'});
+
+		var path = svg.path(layerGroup, this.model.get('path'), {fill: '#FFF', 'fill-opacity': 0, stroke:this.model.get('color'), strokeWidth: 3, filter:'url(#' + this.id + '-filter' + ')'});
+		var layerBBox = layerGroup.getBBox();
 		var midX = svg._width() / 2.0;
 		var midY = svg._height() / 2.0;
-		var layerBBox = layerGroup.getBBox();
-		var drawX = midX - (layerBBox.width * this.model.get('size') / 2.0);
-		var drawY = midY - (layerBBox.height * this.model.get('size') / 4.0);
-		var transform = 'translate(' + drawX + ', ' + drawY + ') scale(' + this.model.get('size') + ', ' + this.model.get('size') / 2.0 + ')';
+		var scaledWidth = layerBBox.width * this.model.get('size');
+		var scaledHeight = layerBBox.height * this.model.get('size');
+		var drawX = midX - (scaledWidth / 2.0);
+		var drawY = midY - (scaledHeight / 2.0);
+		var transform = 'translate(' + drawX + ', ' + drawY + ') scale(' + this.model.get('size') + ', ' + this.model.get('size') + ')';
 		layerGroup.setAttribute('transform',  transform);
-		var layerBBox2 = layerGroup.getBBox();
+
+		//gaussianFilter.setAttribute('width', scaledWidth + 10);
+		//gaussianFilter.setAttribute('height', scaledHeight + 10);
 	}	
 })

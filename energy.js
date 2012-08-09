@@ -72,7 +72,7 @@ energy.createDefaultLayerCollection = function(){
 }
 
 energy.LayerCollectionView = Backbone.View.extend({
-	class: 'layer-collection',
+	className: 'layer-collection',
 	initialize: function(){
 		_.bindAll(this, 'render');
 		this.layerViews = [];
@@ -93,8 +93,15 @@ energy.LayerCollectionView = Backbone.View.extend({
 });
 
 energy.LayerView = Backbone.View.extend({
-	class: 'layer-view',
+	className: 'layer-view',
 	initialize: function(){
+		_.bindAll(this, 'render', 'handleChange');
+		this.model.on('change', this.handleChange, this);
+	},
+	handleChange: function(model, event){
+		if(event.changes.blur && this.gaussianBlur){
+			this.gaussianBlur.setAttribute('stdDeviation', this.model.get('blur'));
+		}		
 	},
 	render: function(svg){ 
 		// This is a little different than the usual Backbone render model.
@@ -103,7 +110,7 @@ energy.LayerView = Backbone.View.extend({
 
 		var defs = svg.defs(layerGroup, this.id + '-defs');
 		var layerFilter = svg.filter(defs, this.id + '-filter', null,null,null,null, {'color-interpolation-filters':'sRGB'});
-		var gaussianBlur = svg.filters.gaussianBlur(layerFilter, null, null, this.model.get('blur') ? this.model.get('blur') :  0, {id:this.id + '-gblur'});
+		this.gaussianBlur = svg.filters.gaussianBlur(layerFilter, null, null, this.model.get('blur') ? this.model.get('blur') :  0, {id:this.id + '-gblur'});
 
 		var path = svg.path(layerGroup, this.model.get('path'), {fill: '#FFF', 'fill-opacity': 0, stroke:this.model.get('color'), strokeWidth: 3, filter:'url(#' + this.id + '-filter' + ')'});
 		var layerBBox = layerGroup.getBBox();
@@ -119,4 +126,79 @@ energy.LayerView = Backbone.View.extend({
 		//gaussianFilter.setAttribute('width', scaledWidth + 10);
 		//gaussianFilter.setAttribute('height', scaledHeight + 10);
 	}	
+})
+
+energy.LayerCollectionControlView = Backbone.View.extend({
+	className: 'layer-collection-control-view',
+	initialize: function(){
+		this.layerControlViews = [];
+		for(var i=0; i < this.collection.length; i++){
+			this.layerControlViews[this.layerControlViews.length] = new energy.LayerControlView({model:this.collection.at(i)});
+		}
+	},
+	render: function(){
+		this.$el.empty();
+
+		var navTabs = $.el.ul({class:'nav nav-tabs'});
+		this.$el.append(navTabs);
+		for(var i=this.layerControlViews.length - 1; i >= 0; i--){
+			var displayName = this.layerControlViews[i].model.get('name');
+			var item = navTabs.append($.el.li($.el.a(displayName)));
+			$(item).click(_.bind(function(){
+				console.log(this);
+				this.view.$el.find('.layer-control-view').hide();
+				this.view.$el.find('.nav-tabs li').removeClass('active');
+				$(this.item).addClass('active');
+				this.controlView.$el.show();
+			}, {view: this, 'item':item, controlView:this.layerControlViews[i], 'item':item}));
+
+			if(i == 0) $(item).addClass('active');
+		}
+
+		for(var i=0; i < this.layerControlViews.length; i++){
+			this.$el.append(this.layerControlViews[i].render().el);
+			if(i != 0) this.layerControlViews[i].$el.hide();
+		}
+		return this;
+	},
+})
+
+energy.LayerControlView = Backbone.View.extend({
+	className: 'layer-control-view',
+	initialize: function(){
+		this.blurDropDown = new energy.DropDownView({model:this.model, fieldName:'blur', values:[0, 1, 2, 3, 4, 5]});
+	},
+	render: function(){
+		this.$el.empty();
+		this.$el.append(this.blurDropDown.render().el);
+		this.$el.append()
+		return this;
+	}
+})
+
+energy.DropDownView = Backbone.View.extend({
+	className: 'drop-down-view btn-group',
+
+	initialize: function(){
+		this.fieldName = this.options.fieldName;
+		if(!this.fieldName) console.log('No field name in drop down view', this);
+		this.values = this.options.values;
+		if(!this.values) console.log("No values in drop down view", this);
+	},
+
+	render: function(){
+		this.$el.empty();
+		var button = $.el.button({class:'btn dropdown-toggle', 'data-toggle':'dropdown'}, this.fieldName + ' ', $.el.span({class:'caret'}));
+		this.$el.append(button);
+		var menu = $.el.ul({class:'dropdown-menu'});
+		this.$el.append(menu);
+		for(var i=0; i < this.values.length; i++){
+			var item = $.el.li($.el.a(this.values[i]));
+			menu.append(item);
+			$(item).click(_.bind(function(){
+				this.view.model.set(this.view.fieldName, this.val);
+			}, { val: this.values[i], view: this }));
+		}
+		return this;
+	},
 })

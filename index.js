@@ -49,10 +49,12 @@ onepage.views.HomeView = Backbone.View.extend({
 	initialize: function(){
 		_.bindAll(this, 'render');
 		this.layerCollectionView = new energy.LayerCollectionView({collection:this.collection});
+		this.layerCollectionControlView = new energy.LayerCollectionControlView({collection:this.collection});
 	},
 	render: function(){
 		this.$el.empty()
 		this.$el.append(this.layerCollectionView.el);
+		this.$el.append(this.layerCollectionControlView.render().el);
 		this.layerCollectionView.render();
 		return this;
 	},

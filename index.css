@@ -2,9 +2,20 @@ body {
 	padding-bottom: 40px;
 }
 
-#homeView { width: 500px; height: 300px; border: solid 1px #ddd;}
-
 @media (max-width: 940px) {
   body {
   }
+}
+
+#homeView { width: 1000px; height: 300px; border: solid 1px #ddd;}
+
+.nav-tabs { margin-bottom: 0; }
+
+.layer-collection-control-view {
+}
+
+.layer-control-view {
+	padding: 1em 0.5em;
+	border: solid 1px #EEE;
+	border-top: none;
 }

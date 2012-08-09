@@ -129,8 +129,9 @@ energy.LayerView = Backbone.View.extend({
 })
 
 energy.LayerCollectionControlView = Backbone.View.extend({
-	className: 'layer-collection-control-view',
+	className: 'layer-collection-control-view tabbable',
 	initialize: function(){
+		this.$el.attr('id', this.cid);
 		this.layerControlViews = [];
 		for(var i=0; i < this.collection.length; i++){
 			this.layerControlViews[this.layerControlViews.length] = new energy.LayerControlView({model:this.collection.at(i)});
@@ -142,31 +143,23 @@ energy.LayerCollectionControlView = Backbone.View.extend({
 		var navTabs = $.el.ul({class:'nav nav-tabs'});
 		this.$el.append(navTabs);
 		for(var i=this.layerControlViews.length - 1; i >= 0; i--){
-			var displayName = this.layerControlViews[i].model.get('name');
-			var item = navTabs.append($.el.li($.el.a(displayName)));
-			$(item).click(_.bind(function(){
-				console.log(this);
-				this.view.$el.find('.layer-control-view').hide();
-				this.view.$el.find('.nav-tabs li').removeClass('active');
-				$(this.item).addClass('active');
-				this.controlView.$el.show();
-			}, {view: this, 'item':item, controlView:this.layerControlViews[i], 'item':item}));
-
-			if(i == 0) $(item).addClass('active');
+			navTabs.append($.el.li($.el.a({'data-toggle':'tab', 'href':'#' + this.layerControlViews[i].cid}, this.layerControlViews[i].model.get('name'))));
+		}
+		var tabContent = $.el.div({class:'tab-content'});
+		this.$el.append(tabContent);
+		for(var i=this.layerControlViews.length - 1; i >= 0; i--){
+			var layerControlEl = tabContent.append(this.layerControlViews[i].render().el);
 		}
 
-		for(var i=0; i < this.layerControlViews.length; i++){
-			this.$el.append(this.layerControlViews[i].render().el);
-			if(i != 0) this.layerControlViews[i].$el.hide();
-		}
 		return this;
 	},
 })
 
 energy.LayerControlView = Backbone.View.extend({
-	className: 'layer-control-view',
+	className: 'layer-control-view tab-pane',
 	initialize: function(){
 		this.blurDropDown = new energy.DropDownView({model:this.model, fieldName:'blur', values:[0, 1, 2, 3, 4, 5]});
+		this.$el.attr('id', this.cid);
 	},
 	render: function(){
 		this.$el.empty();

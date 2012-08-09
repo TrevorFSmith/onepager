@@ -77,4 +77,7 @@ $(document).ready(function(){
 	window.pageView = new onepage.views.PageView({el:"#pageView"});
 	window.pageView.render();
 	Backbone.history.start();
+
+	$('#pageView .tabbable a:first').tab('show');
+
 });

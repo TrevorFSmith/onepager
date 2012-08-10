@@ -101,19 +101,21 @@ energy.LayerView = Backbone.View.extend({
 	handleChange: function(model, event){
 		if(event.changes.blur && this.gaussianBlur){
 			this.gaussianBlur.setAttribute('stdDeviation', this.model.get('blur'));
-		}		
+		} else if (event.changes.opacity && this.layerGroup){
+			this.layerGroup.setAttribute('opacity', this.model.get('opacity'));
+		}
 	},
 	render: function(svg){ 
 		// This is a little different than the usual Backbone render model.
 		// Instead of rendering to this.el using the DOM we render SVG into the SVG context passed as a parameter.
-		var layerGroup = svg.group(this.id, {opacity: this.model.get('opacity')});
+		this.layerGroup = svg.group(this.id, {opacity: this.model.get('opacity')});
 
-		var defs = svg.defs(layerGroup, this.id + '-defs');
+		var defs = svg.defs(this.layerGroup, this.id + '-defs');
 		var layerFilter = svg.filter(defs, this.id + '-filter', null,null,null,null, {'color-interpolation-filters':'sRGB'});
 		this.gaussianBlur = svg.filters.gaussianBlur(layerFilter, null, null, this.model.get('blur') ? this.model.get('blur') :  0, {id:this.id + '-gblur'});
 
-		var path = svg.path(layerGroup, this.model.get('path'), {fill: '#FFF', 'fill-opacity': 0, stroke:this.model.get('color'), strokeWidth: 3, filter:'url(#' + this.id + '-filter' + ')'});
-		var layerBBox = layerGroup.getBBox();
+		var path = svg.path(this.layerGroup, this.model.get('path'), {fill: '#FFF', 'fill-opacity': 0, stroke:this.model.get('color'), strokeWidth: 3, filter:'url(#' + this.id + '-filter' + ')'});
+		var layerBBox = this.layerGroup.getBBox();
 		var midX = svg._width() / 2.0;
 		var midY = svg._height() / 2.0;
 		var scaledWidth = layerBBox.width * this.model.get('size');
@@ -121,7 +123,7 @@ energy.LayerView = Backbone.View.extend({
 		var drawX = midX - (scaledWidth / 2.0);
 		var drawY = midY - (scaledHeight / 2.0);
 		var transform = 'translate(' + drawX + ', ' + drawY + ') scale(' + this.model.get('size') + ', ' + this.model.get('size') + ')';
-		layerGroup.setAttribute('transform',  transform);
+		this.layerGroup.setAttribute('transform',  transform);
 
 		//gaussianFilter.setAttribute('width', scaledWidth + 10);
 		//gaussianFilter.setAttribute('height', scaledHeight + 10);
@@ -159,32 +161,46 @@ energy.LayerControlView = Backbone.View.extend({
 	className: 'layer-control-view tab-pane',
 	initialize: function(){
 		this.blurDropDown = new energy.DropDownView({model:this.model, fieldName:'blur', values:[0, 1, 2, 3, 4, 5]});
+		this.opacityDropDown = new energy.DropDownView({model:this.model, fieldName:'opacity', values:[0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]});
 		this.$el.attr('id', this.cid);
 	},
 	render: function(){
 		this.$el.empty();
 		this.$el.append(this.blurDropDown.render().el);
+		this.$el.append(this.opacityDropDown.render().el);
 		this.$el.append()
 		return this;
 	}
 })
 
 energy.DropDownView = Backbone.View.extend({
-	className: 'drop-down-view btn-group',
+	className: 'drop-down-view',
 
 	initialize: function(){
+		_.bindAll(this, 'render', 'handleChange');
 		this.fieldName = this.options.fieldName;
 		if(!this.fieldName) console.log('No field name in drop down view', this);
 		this.values = this.options.values;
 		if(!this.values) console.log("No values in drop down view", this);
+
+		this.model.on('change:' + this.fieldName, this.handleChange, this);
+	},
+
+	handleChange: function(model, changed){
+		var button = this.$el.find('.btn');
+		button.empty();
+		button.append(this.model.get(this.fieldName) + ' ');
+		button.append($.el.span({class:'caret'}));
 	},
 
 	render: function(){
 		this.$el.empty();
-		var button = $.el.button({class:'btn dropdown-toggle', 'data-toggle':'dropdown'}, this.fieldName + ' ', $.el.span({class:'caret'}));
-		this.$el.append(button);
+		var buttonGroup = $.el.div({class:'btn-group'});
+		this.$el.append(buttonGroup);
+		var button = $.el.button({class:'btn dropdown-toggle', 'data-toggle':'dropdown'}, this.model.get(this.fieldName) + ' ', $.el.span({class:'caret'}));
+		buttonGroup.append(button);
 		var menu = $.el.ul({class:'dropdown-menu'});
-		this.$el.append(menu);
+		buttonGroup.append(menu);
 		for(var i=0; i < this.values.length; i++){
 			var item = $.el.li($.el.a(this.values[i]));
 			menu.append(item);
@@ -192,6 +208,7 @@ energy.DropDownView = Backbone.View.extend({
 				this.view.model.set(this.view.fieldName, this.val);
 			}, { val: this.values[i], view: this }));
 		}
+		this.$el.append($.el.label(this.fieldName));
 		return this;
 	},
 })

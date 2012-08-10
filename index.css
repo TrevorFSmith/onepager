@@ -7,7 +7,7 @@ body {
   }
 }
 
-#homeView { width: 1000px; height: 300px; border: solid 1px #ddd;}
+#homeView { width: 1000px; height: 500px; border: solid 1px #ddd;}
 
 .nav-tabs { margin-bottom: 0; }
 
@@ -22,3 +22,13 @@ body {
 	border: solid 1px #EEE;
 	border-top: none;
 }
+
+.drop-down-view { display: block; height: 3em;}
+.drop-down-view .btn-group { display: inline-block; }
+.drop-down-view label {
+	display: inline;
+	position: relative;
+	top: -0.8em;
+	margin-left: 0.5em;
+}
+

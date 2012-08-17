@@ -1,5 +1,5 @@
 body {
-	padding-bottom: 40px;
+	padding-bottom: 60px;
 }
 
 @media (max-width: 940px) {
@@ -7,10 +7,10 @@ body {
   }
 }
 
-#homeView { width: 1000px; height: 500px; border: solid 1px #ddd;}
+#homeView { width: 1000px; }
 
 .nav-tabs { margin-bottom: 0; }
-
+.layer-collection { height: 600px; }
 .layer-collection-control-view {
 	margin-top: 2em;
 }

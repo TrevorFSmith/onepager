@@ -1,5 +1,17 @@
-// cycle.js
-// 2011-08-24
+/*
+    cycle.js
+    2012-08-19
+
+    Public Domain.
+
+    NO WARRANTY EXPRESSED OR IMPLIED. USE AT YOUR OWN RISK.
+
+    This code should be minified before deployment.
+    See http://javascript.crockford.com/jsmin.html
+
+    USE YOUR OWN COPY. IT IS EXTREMELY UNWISE TO LOAD CODE FROM SERVERS YOU DO
+    NOT CONTROL.
+*/
 
 /*jslint evil: true, regexp: true */
 
@@ -42,9 +54,15 @@ if (typeof JSON.decycle !== 'function') {
             case 'object':
 
 // typeof null === 'object', so get out if this value is not really an object.
+// Also get out if it is a weird builtin object.
 
-                if (!value) {
-                    return null;
+                if (value === null ||
+                        value instanceof Boolean ||
+                        value instanceof Date    ||
+                        value instanceof Number  ||
+                        value instanceof RegExp  ||
+                        value instanceof String) {
+                    return value;
                 }
 
 // If the value is an object or array, look to see if we have already

@@ -6,12 +6,21 @@ onepage.Router = Backbone.Router.extend({
 		"":"home",
 		"about":"about",
 	},
+	initialize: function(){
+		this.route(/^(.[0-9]?)-(.[0-9]?)$/, "day");
+	},
 	home: function(){
 		onepage.activateNav('#');
 		$('.routeView').hide();
 		$('#homeView').show();
+		window.pageView.homeView.showDay(new Date().getMonth() + 1, new Date().getDate());
 	},
-
+	day: function(month, date){
+		onepage.activateNav('#');
+		$('.routeView').hide();
+		$('#homeView').show();
+		window.pageView.homeView.showDay(parseInt(month), parseInt(date));
+	},
 	about: function() {
 		onepage.activateNav('#about');
 		$('.routeView').hide();
@@ -51,6 +60,9 @@ onepage.views.HomeView = Backbone.View.extend({
 		_.bindAll(this);
 		this.daysFlipView = new coss.views.DaysFlipView({'saints':this.options.saints});
 		this.daysFlipView.$el.addClass('span8');
+	},
+	showDay: function(month, date){
+		this.daysFlipView.showDay(month, date);
 	},
 	render: function(){
 		this.$el.empty();

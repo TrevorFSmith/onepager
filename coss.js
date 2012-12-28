@@ -22,6 +22,22 @@ coss.api.Saints = Backbone.Collection.extend({
 
 	// By default, sort the Saints by date
 	comparator: function(saint) { return saint.getDate().getTime(); },
+
+	findByDate: function(month, date){
+		// Return the *index* of the saint in the collection with a date matching or the closest to the month/date passed in.
+		var targetDate = coss.constructDate(month, date);
+		for(var i =0; i < this.length; i++){
+			var saintDate = this.at(i).getDate();
+			if(saintDate.getTime() == targetDate.getTime()){ // if targetDate is a saint's day, use that
+				return i;
+			} else if(saintDate < targetDate){ // if this day is in the past and the next day is in the future, use that
+				if(i < this.length - 1 && this.at(i + 1).getDate() > targetDate){
+					return i + 1;
+				}
+			}
+		}
+		return 0;
+	},
 });
 
 
@@ -36,38 +52,52 @@ coss.views.DaysFlipView = Backbone.View.extend({
 	initialize: function(){
 		_.bindAll(this);
 		this.saintIndex = 0;
+		this.navDate = null;
 		this.options.saints.on('reset', this.handleReset);
+	},
+	navToDay: function(month, date){
+		document.location.href = '#' + month + '-' + date;
+	},
+	showDay: function(month, date){
+		if(this.options.saints.length == 0){
+			// Save the navDate for when the reset is triggered
+			this.navDate = [month, date];
+			console.log("Saving nav day", month, date);
+			return;
+		}
+
+		// Ok, we have saints and a nav date, let's go there
+		console.log("Naving", month, date);
+		this.saintIndex = this.options.saints.findByDate(month, date);
+		var saint = this.options.saints.at(this.saintIndex);
+		if(saint.get('month') != month || saint.get('date') != date){
+			console.log("Renavving");
+			this.navToDay(saint.get('month'), saint.get('date'));
+			return;
+		}
+		this.render();
 	},
 	handleReset: function(){
 		// find the next saint
-		this.options.saints.sort();
-		this.saintIndex = 0;
-		var today = coss.constructDate(new Date().getMonth() + 1, new Date().getDate());
-		for(var i =0; i < this.options.saints.length; i++){
-			var saintDate = this.options.saints.at(i).getDate();
-			if(saintDate.getTime() == today.getTime()){	// if today is a saint's day, use that
-				this.saintIndex = i;
-				break;
-			} else if(saintDate < today){ // if this day is in the past and the next day is in the future, use that
-				if(i < this.options.saints.length - 1 && this.options.saints.at(i + 1).getDate() > today){
-					this.saintIndex = i + 1;
-					break;
-				}
-			}
-			// else, default to the first in the list
+		console.log("Handling reset", this.navDate);
+		if(this.navDate){
+			this.showDay(this.navDate[0], this.navDate[1]);
+			this.navDate = null;
+		} else {
+			this.showDay(new Date().getMonth() + 1, new Date().getDate());
 		}
-		this.render();
 	},
 	flipLeft: function(){ return this.flip(-1); },
 	flipRight: function(){ return this.flip(1); },
 	flip: function(delta){
-		this.saintIndex += delta;
-		if(this.saintIndex < 0){
-			this.saintIndex = this.options.saints.length - 1;
-		} else if(this.saintIndex >= this.options.saints.length){
-			this.saintIndex = 0;
+		var targetIndex = this.saintIndex + delta;
+		if(targetIndex < 0){
+			targetIndex = this.options.saints.length - 1;
+		} else if(targetIndex >= this.options.saints.length){
+			targetIndex = 0;
 		}
-		this.render();
+		var saint = this.options.saints.at(targetIndex);
+		this.navToDay(saint.get('month'), saint.get('date'));
 		return false;
 	},
 	render: function(){

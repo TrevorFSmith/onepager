@@ -1,0 +1,44 @@
+.days-flip-view {
+	position: relative;
+	padding: 0 2em;
+}
+.days-flip-view h2 {
+	text-align: right;
+	font-size: 1.2em;
+	line-height: 1.4em;
+	padding-right: 1em;
+}
+#left-day-arrow, #right-day-arrow {
+	font-size: 4em;
+	position: absolute;
+	top: 0.8em;
+}
+#left-day-arrow { left: -0.2em; }
+#right-day-arrow { right: -0.2em; }
+.day-detail-view {
+	padding: 1em;
+	border: solid 1px #999;
+	min-height: 300px;
+	min-width: 400px;
+}
+.day-detail-view ul {
+	list-style: none;
+	padding: 0;
+	margin: 0 0 1em 0;
+
+}
+.day-detail-view h1 {
+	border-bottom: solid 1px #999;
+	padding-bottom: 0.4em;
+	margin-bottom: 0.4em;
+}
+.day-detail-deets {
+	width: 33%;
+	float: right;
+}
+.day-detail-body {
+	width: 63%;
+}
+.day-arrow {
+	font-size: 1.4em;
+}

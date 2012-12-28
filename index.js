@@ -29,12 +29,16 @@ onepage.views.PageView = Backbone.View.extend({
 	id: 'pageView',
 
 	initialize: function(){
+		_.bindAll(this);
+		this.saints = new coss.api.Saints();
 		this.aboutView = new onepage.views.AboutView();
 		this.$el.append(this.aboutView.render().el);
-		this.homeView = new onepage.views.HomeView();
+		this.homeView = new onepage.views.HomeView({'saints':this.saints});
 		this.$el.append(this.homeView.render().el);
+		this.saints.fetch({
+			error: function(){ console.log("Error loading saints", arguments); }
+		});
 	},
-
 	render: function(){
 		return this;
 	},
@@ -44,10 +48,16 @@ onepage.views.HomeView = Backbone.View.extend({
 	className: 'routeView',
 	id: 'homeView',
 	initialize: function(){
-		_.bindAll(this, 'render');
+		_.bindAll(this);
+		this.daysFlipView = new coss.views.DaysFlipView({'saints':this.options.saints});
+		this.daysFlipView.$el.addClass('span8');
 	},
 	render: function(){
-		this.$el.append($.el.h1('Home:'));
+		this.$el.empty();
+		var topRow = $.el.div({'class':'row-fluid'})
+		topRow.append($.el.div({'class':'span2'}));
+		this.$el.append(topRow);
+		topRow.append(this.daysFlipView.render().el);
 		return this;
 	},
 });

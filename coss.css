@@ -5,6 +5,7 @@
 .days-flip-view h2 {
 	text-align: right;
 	font-size: 1.2em;
+	color: #777;
 	line-height: 1.4em;
 	padding-right: 1em;
 }
@@ -18,8 +19,8 @@
 .day-detail-view {
 	padding: 1em;
 	border: solid 1px #999;
-	min-height: 300px;
-	min-width: 400px;
+	min-height: 25em;
+	border-radius: 1em;
 }
 .day-detail-view ul {
 	list-style: none;

@@ -8,13 +8,23 @@ coss.api.Saint = Backbone.Model.extend({
 	initialize: function(){
 		_.bindAll(this);
 	},
+	getSaintDayName: function(){
+		return 'Saint ' + this.get('name') + ' Day';
+	},
 	getDate: function(){
 		return coss.constructDate(this.get('month'), this.get('date'));
 	},
 	getDateDisplay: function(){
 		return coss.monthNames[this.get('month') - 1] + ' ' + this.get('date');
 	},
+	getUrl: function(){
+		return '#' + this.get('month') + '-' + this.get('date');
+	},
+	getFullUrl: function(){
+		return document.location.protocol + '//' + document.location.host + document.location.pathname + this.getUrl();
+	},
 });
+
 
 coss.api.Saints = Backbone.Collection.extend({
 	model:coss.api.Saint,
@@ -62,16 +72,13 @@ coss.views.DaysFlipView = Backbone.View.extend({
 		if(this.options.saints.length == 0){
 			// Save the navDate for when the reset is triggered
 			this.navDate = [month, date];
-			console.log("Saving nav day", month, date);
 			return;
 		}
 
 		// Ok, we have saints and a nav date, let's go there
-		console.log("Naving", month, date);
 		this.saintIndex = this.options.saints.findByDate(month, date);
 		var saint = this.options.saints.at(this.saintIndex);
 		if(saint.get('month') != month || saint.get('date') != date){
-			console.log("Renavving");
 			this.navToDay(saint.get('month'), saint.get('date'));
 			return;
 		}
@@ -79,7 +86,6 @@ coss.views.DaysFlipView = Backbone.View.extend({
 	},
 	handleReset: function(){
 		// find the next saint
-		console.log("Handling reset", this.navDate);
 		if(this.navDate){
 			this.showDay(this.navDate[0], this.navDate[1]);
 			this.navDate = null;
@@ -126,7 +132,7 @@ coss.views.DayDetailView = Backbone.View.extend({
 	},
 	render: function(){
 		this.$el.empty();
-		this.$el.append($.el.h1('Saint ', this.model.get('name'), ' Day'));
+		this.$el.append($.el.h1(this.model.getSaintDayName()));
 
 		var deets = $.el.div({'class':'day-detail-deets'});
 		this.$el.append(deets);
@@ -145,7 +151,30 @@ coss.views.DayDetailView = Backbone.View.extend({
 			patronageList.append($.el.li(patronage[i]));
 		}
 
-		this.$el.append($.el.div({'class':'day-detail-body'}, this.model.get('body')));
+		this.$el.append($.el.div({'class':'day-detail-body'}, $('<div>' + this.model.get('body') + '</div>')[0]));
+
+		// Now link to All The Things... (G+, Twitter, FB)
+		var shortMessage = "Celebrate " + this.model.getSaintDayName() + " on the Calendar of Science Saints: " + this.model.getFullUrl();
+		var hashTags = this.model.get('hashtags');
+		for(var i=0; i < hashTags.length; i++){
+			shortMessage += " #" + hashTags[i];
+		}
+
+		// Icons came from http://icondock.com/free/vector-social-media-icons
+
+		var socialIcons = $.el.div({'class':'social-buttons'});
+		this.$el.append(socialIcons);
+		var gPlusIcon = socialIcons.append($.el.a({'class':'social-button', 'id':'google-plus-button'}, $.el.img({'src':'social-media-icons/16px/google-plus.png'})));
+		gPlusIcon.setAttribute('href', 'https://plus.google.com/share?url=' + encodeURIComponent(this.model.getFullUrl()));
+		var twitterIcon = socialIcons.append($.el.a({'class':'social-button', 'id':'twitter-button'}, $.el.img({'src':'social-media-icons/16px/twitter.png'})));
+		twitterIcon.setAttribute('href', 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(shortMessage));
+		var facebookIcon = socialIcons.append($.el.a({'class':'social-button', 'id':'facebook-button'}, $.el.img({'src':'social-media-icons/16px/facebook.png'})));
+		facebookIcon.setAttribute('href', 'http://www.facebook.com/sharer.php?s=100&p[url]=' + encodeURIComponent(this.model.getFullUrl()) + '&p[title]=' + encodeURIComponent(this.model.getSaintDayName()) + '&p[summary]=' + encodeURIComponent(shortMessage));
+		var deliciousIcon = socialIcons.append($.el.a({'class':'social-button', 'id':'delicious-button'}, $.el.img({'src':'social-media-icons/16px/delicious.png'})));
+		deliciousIcon.setAttribute('href', 'http://del.icio.us/post?url=' + encodeURIComponent(this.model.getFullUrl()) + '&title=' + encodeURIComponent(this.model.getSaintDayName()));
+		//http://del.icio.us/post?url=<?php the_permalink();?>
+		$(socialIcons).find('a').attr('target', '_blank');
+
 		return this;
 	},
 })

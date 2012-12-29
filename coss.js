@@ -160,19 +160,19 @@ coss.views.DayDetailView = Backbone.View.extend({
 			shortMessage += " #" + hashTags[i];
 		}
 
-		// Icons came from http://icondock.com/free/vector-social-media-icons
-
+		// The icons came from http://icondock.com/free/vector-social-media-icons
 		var socialIcons = $.el.div({'class':'social-buttons'});
 		this.$el.append(socialIcons);
-		var gPlusIcon = socialIcons.append($.el.a({'class':'social-button', 'id':'google-plus-button'}, $.el.img({'src':'social-media-icons/16px/google-plus.png'})));
+		var gPlusIcon = socialIcons.append($.el.a({'class':'social-button', 'id':'google-plus-button'}, $.el.img({'src':'social-media-icons/24px/google-plus.png'})));
 		gPlusIcon.setAttribute('href', 'https://plus.google.com/share?url=' + encodeURIComponent(this.model.getFullUrl()));
-		var twitterIcon = socialIcons.append($.el.a({'class':'social-button', 'id':'twitter-button'}, $.el.img({'src':'social-media-icons/16px/twitter.png'})));
+		var twitterIcon = socialIcons.append($.el.a({'class':'social-button', 'id':'twitter-button'}, $.el.img({'src':'social-media-icons/24px/twitter.png'})));
 		twitterIcon.setAttribute('href', 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(shortMessage));
-		var facebookIcon = socialIcons.append($.el.a({'class':'social-button', 'id':'facebook-button'}, $.el.img({'src':'social-media-icons/16px/facebook.png'})));
+		var facebookIcon = socialIcons.append($.el.a({'class':'social-button', 'id':'facebook-button'}, $.el.img({'src':'social-media-icons/24px/facebook.png'})));
 		facebookIcon.setAttribute('href', 'http://www.facebook.com/sharer.php?s=100&p[url]=' + encodeURIComponent(this.model.getFullUrl()) + '&p[title]=' + encodeURIComponent(this.model.getSaintDayName()) + '&p[summary]=' + encodeURIComponent(shortMessage));
-		var deliciousIcon = socialIcons.append($.el.a({'class':'social-button', 'id':'delicious-button'}, $.el.img({'src':'social-media-icons/16px/delicious.png'})));
+		var deliciousIcon = socialIcons.append($.el.a({'class':'social-button', 'id':'delicious-button'}, $.el.img({'src':'social-media-icons/24px/delicious.png'})));
 		deliciousIcon.setAttribute('href', 'http://del.icio.us/post?url=' + encodeURIComponent(this.model.getFullUrl()) + '&title=' + encodeURIComponent(this.model.getSaintDayName()));
-		//http://del.icio.us/post?url=<?php the_permalink();?>
+		var emailIcon = socialIcons.append($.el.a({'class':'social-button', 'id':'email-button'}, $.el.img({'src':'social-media-icons/24px/email.png'})));
+		emailIcon.setAttribute('href', 'mailto:?subject=' + encodeURIComponent(this.model.getSaintDayName()) + '&body=' + encodeURIComponent(shortMessage));
 		$(socialIcons).find('a').attr('target', '_blank');
 
 		return this;

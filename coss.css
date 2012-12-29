@@ -3,10 +3,10 @@
 	padding: 0 2em;
 }
 .days-flip-view h2 {
-	text-align: right;
-	font-size: 1.2em;
 	color: #777;
-	line-height: 1.4em;
+	text-align: right;
+	font-size: 1.6em;
+	line-height: 1.6em;
 	padding-right: 1em;
 }
 #left-day-arrow, #right-day-arrow {
@@ -46,7 +46,7 @@
 }
 .social-buttons {
 	position: absolute;
-	bottom: -1.7em;
+	bottom: -2.4em;
 }
 .social-buttons .social-button {
 	margin-right: 1em;

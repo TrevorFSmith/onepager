@@ -125,6 +125,19 @@ coss.views.DaysFlipView = Backbone.View.extend({
 	},
 })
 
+coss.views.PicView = Backbone.View.extend({
+	className: 'pic-view',
+	initialize: function(){
+		_.bindAll(this);
+	},
+	render: function(){
+		this.$el.empty();
+		this.$el.append($.el.img({'src':this.options.image[0]}));
+		this.$el.append($.el.a({'href':this.options.image[1], 'target':'_blank'}, 'source'));
+		return this;
+	}
+})
+
 coss.views.DayDetailView = Backbone.View.extend({
 	className: 'day-detail-view',
 	initialize: function(){
@@ -151,7 +164,12 @@ coss.views.DayDetailView = Backbone.View.extend({
 			patronageList.append($.el.li(patronage[i]));
 		}
 
-		this.$el.append($.el.div({'class':'day-detail-body'}, $('<div>' + this.model.get('body') + '</div>')[0]));
+		var bodyDiv = $('<div>' + this.model.get('body') + '</div>');
+		if(this.model.get('image')){
+			bodyDiv.prepend(new coss.views.PicView({'image':this.model.get('image')}).render().el);
+		}
+
+		this.$el.append($.el.div({'class':'day-detail-body'}, bodyDiv[0]));
 
 		// Now link to All The Things... (G+, Twitter, FB)
 		var shortMessage = "Celebrate " + this.model.getSaintDayName() + " on the Calendar of Science Saints: " + this.model.getFullUrl();

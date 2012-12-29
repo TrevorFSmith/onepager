@@ -12,34 +12,46 @@
 #left-day-arrow, #right-day-arrow {
 	font-size: 4em;
 	position: absolute;
-	top: 0.8em;
+	top: 1em;
 }
 #left-day-arrow { left: -0.2em; }
 #right-day-arrow { right: -0.2em; }
 .day-detail-view {
-	position: relative;
 	padding: 1em;
-	border: solid 1px #999;
-	min-height: 25em;
+	min-height: 20em;
+	position: relative;
 	border-radius: 1em;
+	border: solid 1px #999;
 }
 .day-detail-view ul {
-	list-style: none;
 	padding: 0;
+	list-style: none;
 	margin: 0 0 1em 0;
-
 }
+.day-detail-view .pic-view {
+	float: left;
+	max-width: 33%;
+	margin: 0 1em 0 0;
+}
+.day-detail-view .pic-view img {
+	max-height: 14em;
+	display: block;
+}
+.day-detail-view .pic-view a { visibility: hidden; }
+.day-detail-view .pic-view:hover a { visibility: visible; }
+
 .day-detail-view h1 {
 	border-bottom: solid 1px #999;
 	padding-bottom: 0.4em;
 	margin-bottom: 0.4em;
 }
 .day-detail-deets {
-	width: 33%;
+	width: 25%;
 	float: right;
 }
 .day-detail-body {
-	width: 63%;
+	width: 72%;
+	padding-right: 1em;
 }
 .day-arrow {
 	font-size: 1.4em;

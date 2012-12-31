@@ -1,5 +1,22 @@
 [
 	{
+		"date": 1, "month": 1,
+		"name": "Satyendra Nath Bose",
+		"themes": ["life changing letters", "nobel brush-offs"],
+		"patronage": ["X-ray technicians", "large families"],
+		"body": "<p>Best known for his work with St. Einstein (resulting in the theory of the Bose-Einstein condensate), Bose also significantly contributed to our understanding of X-ray crystallography and unified field theories.</p>",
+		"hashtags": ["St"],
+		"image": ["pics/Aatyen-Bose-public-domain.jpg", "http://en.wikipedia.org/wiki/File:AatyenBose1925.jpg"]
+	},
+	{
+		"date": 1, "month": 2,
+		"name": "Oscar Auerbach",
+		"themes": ["corporate interests", "publish or perish"],
+		"patronage": ["addicts", "lab assistants"],
+		"body": "<p>As a pathologist, Auerbach's work helped tie cigarette smoking to cancer and was featured in the 1964 Surgeon General's report on smoking which forever changed the world's perception of smoking.</p>",
+		"hashtags": ["StAuerbach"]
+	},
+	{
 		"date": 12, "month": 2,
 		"name": "Charles Darwin",
 		"themes": ["primal urges", "the long now"],
@@ -7,6 +24,32 @@
 		"body": "<p>Darwin's five years on the Beagle produced a popular travel journal, a fascinating collection of specimens and drawings, and the scientific roots of a cultural change which has changed the nature of humanity's self image.</p>",
 		"hashtags": ["StDarwin"],
 		"image": ["pics/Charles-Darwin-public-domain.jpg", "http://en.wikipedia.org/wiki/File:Charles_Darwin_seated_crop.jpg"]
+	},
+	{
+		"date": 16, "month": 1,
+		"name": "Dian Fossey",
+		"themes": ["martyrdom", "action"],
+		"patronage": ["defenders of the weak"],
+		"body": "<p>Dian Fossey studied gorilla groups in their natural environment for over 18 years, changing our understanding of primate aggression and families.  Through her publications, books, and lectures she also worked to save the endangered mountain gorillas and for that she was murdered.</p>",
+		"hashtags": ["StFossey"]
+	},
+	{
+		"date": 20, "month": 1,
+		"name": "André-Marie Ampère",
+		"themes": ["well stocked libraries", "mutual action"],
+		"patronage": ["navigators", "standards bodies"],
+		"body": "<p>His original work in \"electrodynamics\" (now known as classical electromagnetism) earned him a place in science history, though he claimed that at 18 he knew as much mathematics as he would ever learn.</p>",
+		"hashtags": ["StAmpere"],
+		"image": ["pics/Ampere-Andre-public-domain.jpg", "http://en.wikipedia.org/wiki/File:Ampere_Andre_1825.jpg"]
+	},
+	{
+		"date": 19, "month": 2,
+		"name": "Nicolaus Copernicus",
+		"themes": ["anthropocentrism"],
+		"patronage": ["revolutionaries", "polymaths", "translators"],
+		"body": "<p>Copernicus' book, \"De revolutionibus orbium coelestium\" is regarded by many as the starting point of modern astronomy and the trigger of the scientific revolution.  Legend has it that he died on the same day that his revolutionary book was first printed.</p>",
+		"hashtags": ["StCopernicus"],
+		"image": ["pics/Nikolaus-Kopernikus-public-domain.jpg", "http://en.wikipedia.org/wiki/File:Nikolaus_Kopernikus.jpg"]
 	},
 	{
 		"date": 23, "month": 1,
@@ -55,7 +98,7 @@
 	},
 	{
 		"date": 7, "month": 11,
-		"name": " Marie Skłodowska-Curie",
+		"name": "Marie Skłodowska-Curie",
 		"themes": ["winning", "life balance"],
 		"patronage": ["award winners", "cancer patients"],
 		"body": "<p>A general-purpose scientific powerhouse, Ms. Skłodowska-Curie was a two time nobel prize winner in both physics and chemistry, was married to nobel prize winner, was the mother of a nobel prize winner, and was the first woman winner.</p>",

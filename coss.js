@@ -47,6 +47,12 @@ coss.api.Saints = Backbone.Collection.extend({
 			}
 		}
 		return 0;
+	},
+	logSaints: function(){
+		for(var i=0; i < this.length; i++){
+			var saint = this.at(i);
+			console.log(saint.get('name'), saint.get('month') + '/' + saint.get('date'));
+		}
 	}
 });
 
@@ -199,12 +205,13 @@ coss.views.DayDetailView = Backbone.View.extend({
 
 coss.constructDate = function(month, day){
 	var d = new Date();
+	d.setDate(1); // So that when we set the month it doesn't roll over if today is the 31st
 	d.setMonth(parseInt(month) - 1);
 	d.setDate(parseInt(day));
 	d.setHours(12);
 	d.setMinutes(0);
 	d.setSeconds(0);
-	d.setMilliseconds(0)
+	d.setMilliseconds(0);
 	return d;	
 }
 

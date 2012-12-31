@@ -8,9 +8,6 @@
 		"image": ["pics/.jpg", ""]
 	},
 
-David Hilbert: http://en.wikipedia.org/wiki/Hilbert
-
-
 Louis Daguerre! http://en.wikipedia.org/wiki/Louis_Daguerre﻿
 
 Frank Albert Benford, Jr.
@@ -48,8 +45,6 @@ Huygens: http://en.wikipedia.org/wiki/Christiaan_Huygens
 
 Brahe: http://en.wikipedia.org/wiki/Tycho_Brahe
 
-Copernicus: http://en.wikipedia.org/wiki/Nicolaus_Copernicus
-
 Galilei: http://en.wikipedia.org/wiki/Galileo_Galilei
 
 Sagan: http://en.wikipedia.org/wiki/Carl_Sagan
@@ -80,8 +75,6 @@ Poincare: http://en.wikipedia.org/wiki/Henri_Poincaré
 
 Messier: http://en.wikipedia.org/wiki/Charles_Messier
 
-Ampere: http://en.wikipedia.org/wiki/André-Marie_Ampère
-
 Coulomb: http://en.wikipedia.org/wiki/Charles_Augustin_de_Coulomb
 
 Cassini: http://en.wikipedia.org/wiki/Giovanni_Domenico_Cassini
@@ -97,7 +90,3 @@ http://en.wikipedia.org/wiki/Luc_Montagnier
 Johannes Kepler: http://en.wikipedia.org/wiki/Johannes_Kepler
 
 Lord Kelvin: http://en.wikipedia.org/wiki/Lord_Kelvin
-
-Charles Darwin: http://en.wikipedia.org/wiki/Charles_Darwin
-
-Paul Erdős: http://en.wikipedia.org/wiki/Paul_Erd%C5%91s﻿

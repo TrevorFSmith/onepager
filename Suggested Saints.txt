@@ -3,14 +3,17 @@
 		"name": "",
 		"themes": [""],
 		"patronage": [""],
-		"body": "",
+		"body": "<p></p>",
 		"hashtags": ["St"],
 		"image": ["pics/.jpg", ""]
 	},
 
-Frank Albert Benford, Jr.
+David Hilbert: http://en.wikipedia.org/wiki/Hilbert
 
-Clyde William Tombaugh﻿
+
+Louis Daguerre! http://en.wikipedia.org/wiki/Louis_Daguerre﻿
+
+Frank Albert Benford, Jr.
 
 Erwin Schrödinger
 
@@ -20,9 +23,22 @@ James Prescott Joule
 
 Lee De Forest
 
+Johannes Kepler: http://en.wikipedia.org/wiki/Johannes_Kepler
+
+Lord Kelvin: http://en.wikipedia.org/wiki/Lord_Kelvin
+
+Robert H. Goddard: http://en.wikipedia.org/wiki/Robert_Goddard
+
+
+Georg Ohm: http://en.wikipedia.org/wiki/Georg_Ohm
+
+Niels Bohr: http://en.wikipedia.org/wiki/Niels_Bohr
+
+Werner Heisenberg: http://en.wikipedia.org/wiki/Werner_Heisenberg
+
+
 Godel: http://en.wikipedia.org/wiki/Kurt_Gödel
 
-Hilbert: http://en.wikipedia.org/wiki/Hilbert
 
 Banach: http://en.wikipedia.org/wiki/Banach
 
@@ -77,11 +93,6 @@ De Jussie (family): http://en.wikipedia.org/wiki/De_Jussieu
 Pasteur: http://en.wikipedia.org/wiki/Louis_Pasteur
 
 http://en.wikipedia.org/wiki/Luc_Montagnier
-
-http://en.wikipedia.org/wiki/Marie_curie
-Two time nobel prize winner, in different field (one of only two). Married to nobel prize winner.  Mother of a nobel prize winner. First woman winner.  General-purpose powerhouse.
-
-Louis Daguerre! http://en.wikipedia.org/wiki/Louis_Daguerre﻿
 
 Johannes Kepler: http://en.wikipedia.org/wiki/Johannes_Kepler
 

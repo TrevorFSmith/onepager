@@ -1,5 +1,50 @@
 [
 	{
+		"date": 12, "month": 2,
+		"name": "Charles Darwin",
+		"themes": ["primal urges", "the long now"],
+		"patronage": ["entomologists", "underground printers"],
+		"body": "<p>Darwin's five years on the Beagle produced a popular travel journal, a fascinating collection of specimens and drawings, and the scientific roots of a cultural change which has changed the nature of humanity's self image.</p>",
+		"hashtags": ["StDarwin"],
+		"image": ["pics/Charles-Darwin-public-domain.jpg", "http://en.wikipedia.org/wiki/File:Charles_Darwin_seated_crop.jpg"]
+	},
+	{
+		"date": 23, "month": 1,
+		"name": "David Hilbert",
+		"themes": ["clarity of vision", "dimensions beyond senses"],
+		"patronage": ["agnostics", "career switchers"],
+		"body": "<p>In 1900 Hilbert presented a set of problems which set the course for much of the study of mathematics for the next century.  In addition to asking good questions, he was well known for diving to the heart (or axioms) of important problems.</p>",
+		"hashtags": ["StHilbert"],
+		"image": ["pics/David-Hilbert-public-domain.jpg", "http://en.wikipedia.org/wiki/File:Hilbert.jpg"]
+	},
+	{
+		"date": 23, "month": 3,
+		"name": "Wernher von Braun",
+		"themes": ["focus", "totalitarialism"],
+		"patronage": ["emigrants", "mission control specialists"],
+		"body": "<p>As the first director of the Marshall Space Flight Center and the chief architect of the Saturn V which launched every Moon mission, von Braun made fundamental contributions to the sciences of physics, chemistry and astronomy.</p>",
+		"hashtags": ["StWVB"],
+		"image": ["pics/Wernher-von-Braun-public-domain.jpg", "http://en.wikipedia.org/wiki/File:Wernher_von_Braun_crop.jpg"]
+	},
+	{
+		"date": 4, "month": 2,
+		"name": "Clyde Tombaugh",
+		"themes": ["diy", "self promotion"],
+		"patronage": ["lens grinders", "UFO enthusiasts"],
+		"body": "<p>In the process of discovering Pluto, Tombaugh discovered hundreds of asteroids.</p><p>He got his start by mailing home crafted telescopes and drawings of planets to the Lowell Observatory and eventually they offered him a job.</p>",
+		"hashtags": ["StTombaugh"],
+		"image": ["pics/ClydeTombaugh-public-domain.gif", "http://en.wikipedia.org/wiki/File:ClydeTombaugh2.gif"]
+	},
+	{
+		"date": 26, "month": 3,
+		"name": "Paul Erdős",
+		"themes": ["collaboration"],
+		"patronage": ["connectors", "nomads"],
+		"body": "<p>Erdős published more papers than any other mathematician in history and most scientists have calculated the degrees of separation between themselves and Erdős.  It is rarely a large number of degrees.</p><p>Erdős grew up in an intellectual family and spent much of his adult life traveling with his mother among universities, spreading ideas and making connections.</p>",
+		"hashtags": ["StErdos"],
+		"image": ["pics/Paul-Erdos-FDL.jpg", "http://commons.wikimedia.org/wiki/File:Erdos_budapest_fall_1992.jpg"]
+	},
+	{
 		"date": 10, "month": 7,
 		"name": "Nikola Tesla",
 		"themes": ["mystery", "showmanship", "obsession"],

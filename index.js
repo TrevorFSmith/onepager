@@ -4,7 +4,7 @@ onepage.views = onepage.views || {};
 onepage.Router = Backbone.Router.extend({
 	routes: {
 		"":"home",
-		"about":"about",
+		"about":"about"
 	},
 	initialize: function(){
 		this.route(/^(.[0-9]?)-(.[0-9]?)$/, "day");
@@ -25,7 +25,7 @@ onepage.Router = Backbone.Router.extend({
 		onepage.activateNav('#about');
 		$('.routeView').hide();
 		$('#aboutView').show();
-	},
+	}
 });
 window.router = new onepage.Router();
 
@@ -50,7 +50,7 @@ onepage.views.PageView = Backbone.View.extend({
 	},
 	render: function(){
 		return this;
-	},
+	}
 });
 
 onepage.views.HomeView = Backbone.View.extend({
@@ -71,7 +71,7 @@ onepage.views.HomeView = Backbone.View.extend({
 		this.$el.append(topRow);
 		topRow.append(this.daysFlipView.render().el);
 		return this;
-	},
+	}
 });
 
 onepage.views.AboutView = Backbone.View.extend({
@@ -84,7 +84,7 @@ onepage.views.AboutView = Backbone.View.extend({
 	render: function(){
 		this.$el.html(_.template(this.template, {}));
 		return this;
-	},
+	}
 });
 
 $(document).ready(function(){

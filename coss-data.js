@@ -4,9 +4,27 @@
 		"name": "Nikola Tesla",
 		"themes": ["mystery", "showmanship", "obsession"],
 		"patronage": ["inventors", "OCD sufferers", "debtors"],
-		"body": "<p>Tesla is known for his impressive demonstrations of his electrical inventions as well as theoretical work used in radio communication.</p><p>His highly structured life and celibacy were unusual at the time, and his relationship with the press was sensational.",
+		"body": "<p>Tesla is known for impressive demonstrations of his electrical inventions as well as theoretical work used in radio communication.</p><p>His highly structured life and celibacy were unusual at the time and his relationship with the press was sensational.",
 		"hashtags": ["StTesla"],
 		"image": ["pics/Tesla3-public-domain.jpg", "http://en.wikipedia.org/wiki/File:Tesla_aged_36.jpeg"]
+	},
+	{
+		"date": 7, "month": 11,
+		"name": " Marie Skłodowska-Curie",
+		"themes": ["winning", "life balance"],
+		"patronage": ["award winners", "cancer patients"],
+		"body": "<p>A general-purpose scientific powerhouse, Ms. Skłodowska-Curie was a two time nobel prize winner in both physics and chemistry, was married to nobel prize winner, was the mother of a nobel prize winner, and was the first woman winner.</p>",
+		"hashtags": ["StCurie"],
+		"image": ["pics/Marie-Curie-c1920-public-domain.jpg", "http://en.wikipedia.org/wiki/File:Marie_Curie_c1920.png"]
+	},
+	{
+		"date": 10, "month": 12,
+		"name": "Ada Lovelace",
+		"themes": ["partnership", "foiled expectations"],
+		"patronage": ["coders"],
+		"body": "<p>Referring to herself as a \"poetical scientist\", the Countess of Lovelace is known for her work with Charles Babbage on the Analytical Engine.  She was the first person to write an algorithm to be processed by a machine (aka \"a program\").",
+		"hashtags": ["StAda"],
+		"image": ["pics/Ada-Lovelace-public-domain.jpg", "http://en.wikipedia.org/wiki/File:Ada_lovelace.jpg"]
 	},
 	{
 		"date": 13, "month": 6,
@@ -39,7 +57,7 @@
 		"name": "Benoit Mandelbrot",
 		"themes": ["fractional dimensions", "self-similarity"],
 		"patronage": ["digital artists", "pot users"],
-		"body": "<p>Mandelbrot developed a \"theory of roughness\" and created an entire field of mathematics, fractal geometry, to prove it.  The set which bears his name provides an infinitely deep space of shapes which were some of the first instances visual beauty to be rendered by computer</p><p>His energetic writing style and use of mathematical visualization made his work approachable by the general public.</p>",
+		"body": "<p>Mandelbrot developed a \"theory of roughness\" and created an entire field of mathematics, fractal geometry, to prove it.  The set which bears his name provides an infinitely deep space of shapes which were some of the first instances of visual beauty to be rendered by a computer.</p><p>His energetic writing style and use of mathematical visualization made his work approachable by the general public.</p>",
 		"hashtags": ["StMandelbrot"],
 		"image": ["pics/Benoit-Mandelbrot-CeCILL.jpg", "http://commons.wikimedia.org/wiki/File:Benoit_Mandelbrot_mg_1804b.jpg"]
 	},

@@ -22,7 +22,7 @@ coss.api.Saint = Backbone.Model.extend({
 	},
 	getFullUrl: function(){
 		return document.location.protocol + '//' + document.location.host + document.location.pathname + this.getUrl();
-	},
+	}
 });
 
 
@@ -47,7 +47,7 @@ coss.api.Saints = Backbone.Collection.extend({
 			}
 		}
 		return 0;
-	},
+	}
 });
 
 
@@ -57,7 +57,7 @@ coss.views.DaysFlipView = Backbone.View.extend({
 	className: 'days-flip-view',
 	events: {
 		'click #left-day-arrow':'flipLeft',
-		'click #right-day-arrow':'flipRight',
+		'click #right-day-arrow':'flipRight'
 	},
 	initialize: function(){
 		_.bindAll(this);
@@ -122,7 +122,7 @@ coss.views.DaysFlipView = Backbone.View.extend({
 		var dayDetailView = new coss.views.DayDetailView({model:saint});
 		this.$el.append(dayDetailView.render().el);
 		return this;
-	},
+	}
 })
 
 coss.views.PicView = Backbone.View.extend({
@@ -194,7 +194,7 @@ coss.views.DayDetailView = Backbone.View.extend({
 		$(socialIcons).find('a').attr('target', '_blank');
 
 		return this;
-	},
+	}
 })
 
 coss.constructDate = function(month, day){

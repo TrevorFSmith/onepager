@@ -1,7 +1,7 @@
 body {
 	padding-bottom: 40px;
 }
-.navbar-inner {
+body .navbar-inner {
 	color: #333;
 	background-color: inherit;
 	background-image: none;
@@ -9,16 +9,11 @@ body {
 	-moz-box-shadow: none;
 	box-shadow: none;
 }
-.navbar .brand {
+body .navbar .brand {
 	color: #333;
 }
-.navbar .nav .active > a, .navbar .nav .active > a:hover, .navbar .nav > li > a, .navbar .nav > li > a:hover {
+body .navbar .nav .active > a, .navbar .nav .active > a:hover, .navbar .nav > li > a, .navbar .nav > li > a:hover {
 	background-color: inherit;
 	color: #333;
 	text-shadow: none;
-}
-
-@media (max-width: 940px) {
-  body {
-  }
 }

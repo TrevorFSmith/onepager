@@ -5,8 +5,17 @@
 		"themes": ["life changing letters", "nobel brush-offs"],
 		"patronage": ["X-ray technicians", "large families"],
 		"body": "<p>Best known for his work with St. Einstein (resulting in the theory of the Bose-Einstein condensate), Bose also significantly contributed to our understanding of X-ray crystallography and unified field theories.</p>",
-		"hashtags": ["St"],
+		"hashtags": ["StNathBose"],
 		"image": ["pics/Aatyen-Bose-public-domain.jpg", "http://en.wikipedia.org/wiki/File:AatyenBose1925.jpg"]
+	},
+	{
+		"date": 12, "month": 8,
+		"name": "Erwin Schrödinger",
+		"themes": ["uncertainty"],
+		"patronage": ["schizophrenics", "dog owners"],
+		"body": "<p>St. Schrödinger formulated the wave equation, proposed an original interpretation of it's physical meaning, and disputed the Copenhagen interpretation of quantum mechanics using the paradox of the cat.</p><p>Few people know that he also contributed to the sciences of color perception and colorimetry.</p>",
+		"hashtags": ["StSchrodinger"],
+		"image": ["pics/Erwin-Schrodinger-public-domain.jpg", "http://en.wikipedia.org/wiki/File:Erwin_Schr%C3%B6dinger.jpg"]
 	},
 	{
 		"date": 1, "month": 2,

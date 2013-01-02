@@ -1,5 +1,23 @@
 [
 	{
+		"date": 26, "month": 6,
+		"name": "William Thomson (Lord Kelvin)",
+		"themes": ["long distance romance"],
+		"patronage": ["early bloomers", "arctic explorers"],
+		"body": "<p>St. Thomson determined the correct value of absolute zero and thus earned the honor of having absolute temperatures measured in \"kelvins\".</p><p>Though he almost died of heart failure at age nine, he began his study at university at age 10.</p>",
+		"hashtags": ["StKelvin"],
+		"image": ["pics/Lord-Kelvin-public-domain.jpg", "http://en.wikipedia.org/wiki/File:Lord_Kelvin_photograph.jpg"]
+	},
+	{
+		"date": 18, "month": 9,
+		"name": "Léon Foucault",
+		"themes": ["seeing is believing"],
+		"patronage": ["naming consultants", "multiple sclerosis sufferers"],
+		"body": "<p>The Fizeau–Foucault apparatus measured the speed of light and was used to finally disprove Newton's corpuscle theory of light.  Foucault's pendulum demonstrated the rotation of the Earth on its axis, causing a stir in the popular press and in scientific communities.</p>",
+		"hashtags": ["StFoucault"],
+		"image": ["pics/Foucault-public-domain.jpg", "http://en.wikipedia.org/wiki/File:Foucault.jpg"]
+	},
+	{
 		"date": 1, "month": 1,
 		"name": "Satyendra Nath Bose",
 		"themes": ["life changing letters", "nobel brush-offs"],

@@ -1,23 +1,5 @@
 [
 	{
-		"date": 26, "month": 6,
-		"name": "William Thomson (Lord Kelvin)",
-		"themes": ["long distance romance"],
-		"patronage": ["early bloomers", "arctic explorers"],
-		"body": "<p>St. Thomson determined the correct value of absolute zero and thus earned the honor of having absolute temperatures measured in \"kelvins\".</p><p>Though he almost died of heart failure at age nine, he began his study at university at age 10.</p>",
-		"hashtags": ["StKelvin"],
-		"image": ["pics/Lord-Kelvin-public-domain.jpg", "http://en.wikipedia.org/wiki/File:Lord_Kelvin_photograph.jpg"]
-	},
-	{
-		"date": 18, "month": 9,
-		"name": "Léon Foucault",
-		"themes": ["seeing is believing"],
-		"patronage": ["naming consultants", "multiple sclerosis sufferers"],
-		"body": "<p>The Fizeau–Foucault apparatus measured the speed of light and was used to finally disprove Newton's corpuscle theory of light.  Foucault's pendulum demonstrated the rotation of the Earth on its axis, causing a stir in the popular press and in scientific communities.</p>",
-		"hashtags": ["StFoucault"],
-		"image": ["pics/Foucault-public-domain.jpg", "http://en.wikipedia.org/wiki/File:Foucault.jpg"]
-	},
-	{
 		"date": 1, "month": 1,
 		"name": "Satyendra Nath Bose",
 		"themes": ["life changing letters", "nobel brush-offs"],
@@ -27,30 +9,22 @@
 		"image": ["pics/Aatyen-Bose-public-domain.jpg", "http://en.wikipedia.org/wiki/File:AatyenBose1925.jpg"]
 	},
 	{
-		"date": 12, "month": 8,
-		"name": "Erwin Schrödinger",
-		"themes": ["uncertainty"],
-		"patronage": ["schizophrenics", "dog owners"],
-		"body": "<p>St. Schrödinger formulated the wave equation, proposed an original interpretation of it's physical meaning, and disputed the Copenhagen interpretation of quantum mechanics using the paradox of the cat.</p><p>Few people know that he also contributed to the sciences of color perception and colorimetry.</p>",
-		"hashtags": ["StSchrodinger"],
-		"image": ["pics/Erwin-Schrodinger-public-domain.jpg", "http://en.wikipedia.org/wiki/File:Erwin_Schr%C3%B6dinger.jpg"]
+		"date": 2, "month": 1,
+		"name": "Rita Levi-Montalcini",
+		"themes": ["corprate/academic partnership", "cancer as opportunity"],
+		"patronage": ["powerhouse families", "senators for life"],
+		"body": "<p>Together with Stanley Cohen, St. Levi-Montalcini discovered nerve growth factor, one of the first proteins proven to regulate neurons.  She started her research from her bedroom laboratory during World War II.</p><p>She was the first Nobel laureate to reach 100 years of age.</p>",
+		"hashtags": ["StLeviMontalcini"],
+		"image": ["pics/Rita-Levi-Montalcini-CC-reuse.jpg", "http://en.wikipedia.org/wiki/File:Rita_Levi_Montalcini.jpg"]
 	},
 	{
-		"date": 1, "month": 2,
-		"name": "Oscar Auerbach",
-		"themes": ["corporate interests", "publish or perish"],
-		"patronage": ["addicts", "lab assistants"],
-		"body": "<p>As a pathologist, Auerbach's work helped tie cigarette smoking to cancer and was featured in the 1964 Surgeon General's report on smoking which forever changed the world's perception of smoking.</p>",
-		"hashtags": ["StAuerbach"]
-	},
-	{
-		"date": 12, "month": 2,
-		"name": "Charles Darwin",
-		"themes": ["primal urges", "the long now"],
-		"patronage": ["entomologists", "underground printers"],
-		"body": "<p>Darwin's five years on the Beagle produced a popular travel journal, a fascinating collection of specimens and drawings, and the scientific roots of a cultural change which has changed the nature of humanity's self image.</p>",
-		"hashtags": ["StDarwin"],
-		"image": ["pics/Charles-Darwin-public-domain.jpg", "http://en.wikipedia.org/wiki/File:Charles_Darwin_seated_crop.jpg"]
+		"date": 8, "month": 1,
+		"name": "Henri Poincaré",
+		"themes": ["unsolved problems", "staying true under duress"],
+		"patronage": ["atheists", "railroad engineers"],
+		"body": "<p>In addition to laying down the foundations of chaos theory and topology, St. Poincaré also prepared the way for the formulation of special relativity by demonstrating the invariance of physical laws under different situations.</p>",
+		"hashtags": ["StPoincare"],
+		"image": ["pics/Henri-Poincare-public-domain.jpg", "http://en.wikipedia.org/wiki/File:Henri_Poincar%C3%A9-2.jpg"]
 	},
 	{
 		"date": 16, "month": 1,
@@ -70,6 +44,32 @@
 		"image": ["pics/Ampere-Andre-public-domain.jpg", "http://en.wikipedia.org/wiki/File:Ampere_Andre_1825.jpg"]
 	},
 	{
+		"date": 23, "month": 1,
+		"name": "David Hilbert",
+		"themes": ["clarity of vision", "dimensions beyond senses"],
+		"patronage": ["agnostics", "career switchers"],
+		"body": "<p>In 1900 Hilbert presented a set of problems which set the course for much of the study of mathematics for the next century.  In addition to asking good questions, he was well known for diving to the heart (or axioms) of important problems.</p>",
+		"hashtags": ["StHilbert"],
+		"image": ["pics/David-Hilbert-public-domain.jpg", "http://en.wikipedia.org/wiki/File:Hilbert.jpg"]
+	},
+	{
+		"date": 1, "month": 2,
+		"name": "Oscar Auerbach",
+		"themes": ["corporate interests", "publish or perish"],
+		"patronage": ["addicts", "lab assistants"],
+		"body": "<p>As a pathologist, Auerbach's work helped tie cigarette smoking to cancer and was featured in the 1964 Surgeon General's report on smoking which forever changed the world's perception of smoking.</p>",
+		"hashtags": ["StAuerbach"]
+	},
+	{
+		"date": 12, "month": 2,
+		"name": "Charles Darwin",
+		"themes": ["primal urges", "the long now"],
+		"patronage": ["entomologists", "underground printers"],
+		"body": "<p>Darwin's five years on the Beagle produced a popular travel journal, a fascinating collection of specimens and drawings, and the scientific roots of a cultural change which has changed the nature of humanity's self image.</p>",
+		"hashtags": ["StDarwin"],
+		"image": ["pics/Charles-Darwin-public-domain.jpg", "http://en.wikipedia.org/wiki/File:Charles_Darwin_seated_crop.jpg"]
+	},
+	{
 		"date": 19, "month": 2,
 		"name": "Nicolaus Copernicus",
 		"themes": ["anthropocentrism"],
@@ -79,13 +79,31 @@
 		"image": ["pics/Nikolaus-Kopernikus-public-domain.jpg", "http://en.wikipedia.org/wiki/File:Nikolaus_Kopernikus.jpg"]
 	},
 	{
-		"date": 23, "month": 1,
-		"name": "David Hilbert",
-		"themes": ["clarity of vision", "dimensions beyond senses"],
-		"patronage": ["agnostics", "career switchers"],
-		"body": "<p>In 1900 Hilbert presented a set of problems which set the course for much of the study of mathematics for the next century.  In addition to asking good questions, he was well known for diving to the heart (or axioms) of important problems.</p>",
-		"hashtags": ["StHilbert"],
-		"image": ["pics/David-Hilbert-public-domain.jpg", "http://en.wikipedia.org/wiki/File:Hilbert.jpg"]
+		"date": 26, "month": 6,
+		"name": "William Thomson (Lord Kelvin)",
+		"themes": ["long distance romance"],
+		"patronage": ["early bloomers", "arctic explorers"],
+		"body": "<p>St. Thomson determined the correct value of absolute zero and thus earned the honor of having absolute temperatures measured in \"kelvins\".</p><p>Though he almost died of heart failure at age nine, he began his study at university at age 10.</p>",
+		"hashtags": ["StKelvin"],
+		"image": ["pics/Lord-Kelvin-public-domain.jpg", "http://en.wikipedia.org/wiki/File:Lord_Kelvin_photograph.jpg"]
+	},
+	{
+		"date": 18, "month": 9,
+		"name": "Léon Foucault",
+		"themes": ["seeing is believing"],
+		"patronage": ["naming consultants", "multiple sclerosis sufferers"],
+		"body": "<p>The Fizeau–Foucault apparatus measured the speed of light and was used to finally disprove Newton's corpuscle theory of light.  Foucault's pendulum demonstrated the rotation of the Earth on its axis, causing a stir in the popular press and in scientific communities.</p>",
+		"hashtags": ["StFoucault"],
+		"image": ["pics/Foucault-public-domain.jpg", "http://en.wikipedia.org/wiki/File:Foucault.jpg"]
+	},
+	{
+		"date": 12, "month": 8,
+		"name": "Erwin Schrödinger",
+		"themes": ["uncertainty"],
+		"patronage": ["schizophrenics", "dog owners"],
+		"body": "<p>St. Schrödinger formulated the wave equation, proposed an original interpretation of it's physical meaning, and disputed the Copenhagen interpretation of quantum mechanics using the paradox of the cat.</p><p>Few people know that he also contributed to the sciences of color perception and colorimetry.</p>",
+		"hashtags": ["StSchrodinger"],
+		"image": ["pics/Erwin-Schrodinger-public-domain.jpg", "http://en.wikipedia.org/wiki/File:Erwin_Schr%C3%B6dinger.jpg"]
 	},
 	{
 		"date": 23, "month": 3,

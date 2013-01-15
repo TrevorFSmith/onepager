@@ -19,56 +19,56 @@
 
 	<body>
 
-	<div class="navbar">
-	  <div class="navbar-inner">
-		<div class="container">
-		  <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-		  </a>
-		  <a class="brand" href="#">Project name</a>
-		  <div class="nav-collapse">
-			<ul class="nav">
-			  <li class="active"><a href="#">Home</a></li>
-			  <li><a href="#about">About</a></li>
-			</ul>
-		  </div>
+		<div class="page-container">
+			<div class="center-wrap">
+				<header>
+					<h1>Project name</h1>
+					<nav>
+						<ul>
+							<li class="active"><a href="#">Home</a></li>
+							<li><a href="#about">About</a></li>
+						</ul>
+					</nav>
+				</header>
+				<section id="pageView" class="main-panel">
+				</section>
+			</div>
+			<footer>
+				<div class="center-wrap">
+					&copy; 2020 <a href="http://trevor.smith.name/">Trevor F. Smith</a>
+				</div>
+			</footer>
 		</div>
-	  </div>
-	</div>
 
-	<div id="pageView" class="container-fluid"></div>
+		<script src="jquery.1.7.2.js"></script>
+		<script src="underscore-1.4.3-min.js"></script>
+		<script src="json-js/json2.js"></script>
+		<script src="backbone-0.9.9-min.js"></script>
+		<script src="laconic.js"></script>
 
-	<script src="jquery.1.7.2.js"></script>
-	<script src="underscore-1.4.3-min.js"></script>
-	<script src="json-js/json2.js"></script>
-	<script src="backbone-0.9.9-min.js"></script>
-	<script src="laconic.js"></script>
+		<script src="bootstrap/js/bootstrap-collapse.js"></script>
+		<script src="bootstrap/js/bootstrap-dropdown.js"></script>
+		<!--
+		<script src="bootstrap/js/bootstrap-tab.js"></script>
+		<script src="bootstrap/js/bootstrap-transition.js"></script>
+		<script src="bootstrap/js/bootstrap-alert.js"></script>
+		<script src="bootstrap/js/bootstrap-modal.js"></script>
+		<script src="bootstrap/js/bootstrap-scrollspy.js"></script>
+		<script src="bootstrap/js/bootstrap-tooltip.js"></script>
+		<script src="bootstrap/js/bootstrap-popover.js"></script>
+		<script src="bootstrap/js/bootstrap-button.js"></script>
+		<script src="bootstrap/js/bootstrap-carousel.js"></script>
+		<script src="bootstrap/js/bootstrap-typeahead.js"></script>
 
-	<script src="bootstrap/js/bootstrap-collapse.js"></script>
-	<script src="bootstrap/js/bootstrap-dropdown.js"></script>
-	<!--
-	<script src="bootstrap/js/bootstrap-tab.js"></script>
-	<script src="bootstrap/js/bootstrap-transition.js"></script>
-	<script src="bootstrap/js/bootstrap-alert.js"></script>
-	<script src="bootstrap/js/bootstrap-modal.js"></script>
-	<script src="bootstrap/js/bootstrap-scrollspy.js"></script>
-	<script src="bootstrap/js/bootstrap-tooltip.js"></script>
-	<script src="bootstrap/js/bootstrap-popover.js"></script>
-	<script src="bootstrap/js/bootstrap-button.js"></script>
-	<script src="bootstrap/js/bootstrap-carousel.js"></script>
-	<script src="bootstrap/js/bootstrap-typeahead.js"></script>
+		<script src="bootbone.js"></script>
+		-->
+		<script src="index.js"></script>
 
-	<script src="bootbone.js"></script>
-	-->
-	<script src="index.js"></script>
-
-	<script type="text/html" id='aboutTemplate'>
-		<h1>About:</h1>
-		<p>
-			This is a "one pager" web app by <a href="http://trevor.smith.name/">Trevor F. Smith</a>.
-		</p>
-	</script>
+		<script type="text/html" id='aboutTemplate'>
+			<h1>About:</h1>
+			<p>
+				This is a "one pager" web app by <a href="http://trevor.smith.name/">Trevor F. Smith</a>.
+			</p>
+		</script>
 	</body>
 </html>

@@ -21,7 +21,7 @@ onepage.Router = Backbone.Router.extend({
 window.router = new onepage.Router();
 
 onepage.activateNav = function(hash){
-	$('.nav li').attr('class', 'inactive');
+	$('nav li').attr('class', 'inactive');
 	$('a[href=' + hash + ']').parent().attr('class', 'active');
 }
 

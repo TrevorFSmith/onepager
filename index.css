@@ -1,12 +1,12 @@
 body {
 	padding-bottom: 40px;
-	background-color: #CCC;
+	background-color: #AAA;
 }
 
 .page-container {
 	position: relative;
-	background-color: #AAA;
-	padding: 0 0.8em 4em 0.8em;
+	background-color: #CCC;
+	padding: 0 0.8em 3em 0.8em;
 }
 
 .center-wrap {
@@ -18,7 +18,7 @@ body {
 header {margin-bottom: 1em; }
 header nav { 
 	position: absolute; 
-	top: 2em; right: 1em; 
+	top: 2em; right: 0em; 
 	text-align: right; 
 	text-transform: uppercase; 
 }
@@ -27,7 +27,7 @@ header nav li {
 	font-size: 1.2em;
 	display: inline; 
 	list-style: none; list-style-image: none;
-	margin-right: 1em;
+	margin-left: 1em;
 }
 header nav li.active {
 	border-bottom: solid 0.1em #FFF;
@@ -42,21 +42,20 @@ header nav li a, header nav li a:hover {
 	background-color: #fff;
 	border: 0.1em solid #cbcbcb;
 	padding: 2em 1em 3em 1em;
-	box-shadow: rgba(0, 0, 0, 0.3) 0.1em 0.1em 0.2em;
+	box-shadow: rgba(0, 0, 0, 0.3) 0.2em 0.2em 0.4em;
 }
 
 footer {
-	background-color: #CCC;
+	background-color: #AAA;
 	width: 100%;
 	border-top: solid 2px #BBB;
 	font-size: 0.875em;
 	line-height: 5em;
 	text-align: left;
 }
-footer div.center-wrap { padding-left: 3em; }
 footer, footer a {
 	color: #666;
-	text-shadow: 0.2em 0.2em 0.01em #FFF;
+	text-shadow: 0.1em 0.1em 0.2em #FFF;
 }
 @media (max-width: 940px) {
   body {

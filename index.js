@@ -42,8 +42,7 @@ onepage.views.PageView = Backbone.View.extend({
 
 onepage.views.RailView = Backbone.View.extend({
 	/*
-	The element at the border of a resizable BoxView which responds to drag events by sending the BoxView drag deltas.
-	The BoxView then resizes and moves itself accordingly.
+	The element at the border of a resizable BoxView (passed as options.parent) which responds to drag events by resizing the BoxView.
 	*/
 	className: 'boxViewRail',
 	initialize: function(){
@@ -66,10 +65,25 @@ onepage.views.RailView = Backbone.View.extend({
 	dragDrag: function(event){
 		var mousePosition = [event.pageX, event.pageY];
 		var delta = [(this.startPosition[0] - mousePosition[0]), (this.startPosition[1] - mousePosition[1])];
-		if(this.options.parent && (typeof this.options.parent.handleRailDelta == 'function')){
-			this.options.parent.handleRailDelta(this.options.position, [this.lastDelta[0] - delta[0], this.lastDelta[1] - delta[1]]);
-		}
+		this.handleDelta([this.lastDelta[0] - delta[0], this.lastDelta[1] - delta[1]]);
 		this.lastDelta = delta;
+	},
+	handleDelta: function(delta){
+		if(this.options.position == 'top'){
+			var newTop = parseInt(this.options.parent.$el.css('top')) + delta[1];
+			var newHeight = parseInt(this.options.parent.$el.css('height')) - delta[1];
+			this.options.parent.$el.css({'top': newTop + 'px', 'height':newHeight + 'px'});
+		} else if(this.options.position == 'bottom'){
+			var newHeight = parseInt(this.options.parent.$el.css('height')) + delta[1];
+			this.options.parent.$el.css({'height':newHeight + 'px'});
+		} else if(this.options.position == 'right'){
+			var newWidth = parseInt(this.options.parent.$el.css('width')) + delta[0];
+			this.options.parent.$el.css({'width':newWidth + 'px'});
+		} else if(this.options.position == 'left'){
+			var newLeft = parseInt(this.options.parent.$el.css('left')) + delta[0];
+			var newWidth = parseInt(this.options.parent.$el.css('width')) - delta[0];
+			this.options.parent.$el.css({'left':newLeft + 'px', 'width':newWidth + 'px'});
+		}
 	},
 	dragStop: function(event){
 	},
@@ -102,28 +116,17 @@ onepage.views.BoxView = Backbone.View.extend({
 		this.leftRailView = new onepage.views.RailView({position:'left', parent:this});
 		this.$el.append(this.leftRailView.render().el);
 	},
-	handleRailDelta: function(position, delta){
-		if(position == 'top'){
-			var newTop = parseInt(this.$el.css('top')) + delta[1];
-			var newHeight = parseInt(this.$el.css('height')) - delta[1];
-			this.$el.css({'top': newTop + 'px', 'height':newHeight + 'px'});
-		} else if(position == 'bottom'){
-			var newHeight = parseInt(this.$el.css('height')) + delta[1];
-			this.$el.css({'height':newHeight + 'px'});
-		} else if(position == 'right'){
-			var newWidth = parseInt(this.$el.css('width')) + delta[0];
-			this.$el.css({'width':newWidth + 'px'});
-		} else if(position == 'left'){
-			var newLeft = parseInt(this.$el.css('left')) + delta[0];
-			var newWidth = parseInt(this.$el.css('width')) - delta[0];
-			this.$el.css({'left':newLeft + 'px', 'width':newWidth + 'px'});
-		}
-	},
 	dragStart: function(event){
-		this.startPosition = [event.offsetX, event.offsetY];
+		this.startPosition = [parseInt(this.$el.css('left')), parseInt(this.$el.css('top'))];
+		this.startMousePosition = [event.pageX, event.pageY];
+
 	},
 	dragDrag: function(event){
-		var mouseOffset = this.helperView.offset(this.$el)
+		var mousePosition = [event.pageX, event.pageY];
+		var delta = [-1 * (this.startMousePosition[0] - mousePosition[0]), -1 * (this.startMousePosition[1] - mousePosition[1])];
+		var newTop = this.startPosition[1] + delta[1];
+		var newLeft = this.startPosition[0] + delta[0];
+		this.$el.css({'top':newTop + 'px', 'left':newLeft + 'px'});
 	},
 	dragStop: function(event){
 	},

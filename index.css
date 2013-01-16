@@ -1,8 +1,22 @@
 body {
 	padding-bottom: 40px;
 }
+.roundedBorder {
+	border: solid 1px #EEE;
+	border-radius: 1em;
+	padding: 1em;
+}
 
-@media (max-width: 940px) {
-  body {
-  }
+#homeView {
+	position: relative;
+	min-height: 40em;
+}
+.boxView {
+	min-height: 1em; min-width: 1em;
+	position: absolute;
+	text-align: center;
+	border: solid 1px #2F2;
+	background-color: #9F9;
+}
+.dragCreateHelper {
 }

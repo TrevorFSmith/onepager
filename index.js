@@ -40,14 +40,24 @@ onepage.views.PageView = Backbone.View.extend({
 	},
 });
 
-onepage.views.RailView = Backbone.View.extend({
+onepage.views.DragHelper = Backbone.View.extend({
 	/*
-	The element at the border of a resizable BoxView (passed as options.parent) which responds to drag events by resizing the BoxView.
+	An empty view which is used as a drag helper instead of moving the draggable element
 	*/
-	className: 'boxViewRail',
+	className:'dragHelper',
+	render: function(){ return this; },
+	offset: function(parentEl){
+		// Returns [x,y] position of this view relative to parentEl
+		var position = this.$el.position();
+		var parentPosition = $(parentEl).position();
+		return [position.left - parentPosition.left, position.top - parentPosition.top]
+	}
+})
+
+onepage.views.DragDeltaView = Backbone.View.extend({
 	initialize: function(){
 		_.bindAll(this);
-		this.$el.addClass(this.options.position + 'BoxViewRail'); // Add a class like 'topBoxViewRail'
+		this.$el.addClass('dragDeltaView');
 		this.helperView = new onepage.views.DragHelper();
 		this.$el.draggable({
 			cursor:'move',
@@ -61,12 +71,69 @@ onepage.views.RailView = Backbone.View.extend({
 	dragStart: function(event){
 		this.startPosition = [event.pageX, event.pageY];
 		this.lastDelta = [0,0];
+		this.options.parent.$el.addClass('resizing');
 	},
 	dragDrag: function(event){
 		var mousePosition = [event.pageX, event.pageY];
 		var delta = [(this.startPosition[0] - mousePosition[0]), (this.startPosition[1] - mousePosition[1])];
 		this.handleDelta([this.lastDelta[0] - delta[0], this.lastDelta[1] - delta[1]]);
 		this.lastDelta = delta;
+	},
+	handleDelta: function(delta){ /* Override me to handle a delta like [xDelta, yDelta] */},
+	dragStop: function(event){
+		this.options.parent.$el.removeClass('resizing');
+	},
+	render: function(){ return this; }
+})
+
+onepage.views.CornerView = onepage.views.DragDeltaView.extend({
+	/*
+	The element at the corner of a resizable BoxView, passed as options.parent.
+	It has a position, ['topLeft', 'topRight', 'bottomLeft', 'bottomRight'], passed as options.position.
+	It responds to drag events by resizing the BoxView.
+	*/
+	className: 'cornerView',
+	initialize: function(options){
+		onepage.views.DragDeltaView.prototype.initialize.call(this, options);
+		this.$el.addClass(this.options.position + 'CornerView');
+	},
+	handleDelta: function(delta){
+		if(this.options.position == 'topLeft'){
+			var newTop = parseInt(this.options.parent.$el.css('top')) + delta[1];
+			var newHeight = parseInt(this.options.parent.$el.css('height')) - delta[1];
+			var newLeft = parseInt(this.options.parent.$el.css('left')) + delta[0];
+			var newWidth = parseInt(this.options.parent.$el.css('width')) - delta[0];
+			this.options.parent.$el.css({'top': newTop + 'px', 'height':newHeight + 'px', 'left':newLeft + 'px', 'width':newWidth + 'px'});
+		} else if(this.options.position == 'topRight'){
+			var newTop = parseInt(this.options.parent.$el.css('top')) + delta[1];
+			var newHeight = parseInt(this.options.parent.$el.css('height')) - delta[1];
+			var newWidth = parseInt(this.options.parent.$el.css('width')) + delta[0];
+			this.options.parent.$el.css({'top': newTop + 'px', 'height':newHeight + 'px', 'width':newWidth + 'px'});
+		} else if(this.options.position == 'bottomLeft'){
+			var newLeft = parseInt(this.options.parent.$el.css('left')) + delta[0];
+			var newWidth = parseInt(this.options.parent.$el.css('width')) - delta[0];
+			var newHeight = parseInt(this.options.parent.$el.css('height')) + delta[1];
+			this.options.parent.$el.css({'height':newHeight + 'px', 'width':newWidth + 'px', 'left':newLeft + 'px'});
+		} else if(this.options.position == 'bottomRight'){
+			var newWidth = parseInt(this.options.parent.$el.css('width')) + delta[0];
+			var newHeight = parseInt(this.options.parent.$el.css('height')) + delta[1];
+			this.options.parent.$el.css({'height':newHeight + 'px', 'width':newWidth + 'px'});
+		} else {
+			console.log("Unknown position", this.options.position);
+		}
+	},
+});
+
+onepage.views.RailView = onepage.views.DragDeltaView.extend({
+	/*
+	The element at the border of a resizable BoxView, passed as options.parent.
+	It has a position, ['top', 'bottom', 'left', 'right'], passed as options.position.
+	It responds to drag events by resizing the BoxView.
+	*/
+	className: 'boxViewRail',
+	initialize: function(options){
+		onepage.views.DragDeltaView.prototype.initialize.call(this, options);
+		this.$el.addClass(this.options.position + 'BoxViewRail'); // Add a class like 'topBoxViewRail'
 	},
 	handleDelta: function(delta){
 		if(this.options.position == 'top'){
@@ -84,12 +151,6 @@ onepage.views.RailView = Backbone.View.extend({
 			var newWidth = parseInt(this.options.parent.$el.css('width')) - delta[0];
 			this.options.parent.$el.css({'left':newLeft + 'px', 'width':newWidth + 'px'});
 		}
-	},
-	dragStop: function(event){
-	},
-	render: function(){
-		this.$el.empty();
-		return this;
 	}
 })
 
@@ -115,11 +176,18 @@ onepage.views.BoxView = Backbone.View.extend({
 		this.$el.append(this.rightRailView.render().el);
 		this.leftRailView = new onepage.views.RailView({position:'left', parent:this});
 		this.$el.append(this.leftRailView.render().el);
+		this.topLeftCornerView = new onepage.views.CornerView({position:'topLeft', parent:this});
+		this.$el.append(this.topLeftCornerView.render().el);
+		this.topRightCornerView = new onepage.views.CornerView({position:'topRight', parent:this});
+		this.$el.append(this.topRightCornerView.render().el);
+		this.bottomLeftCornerView = new onepage.views.CornerView({position:'bottomLeft', parent:this});
+		this.$el.append(this.bottomLeftCornerView.render().el);
+		this.bottomRightCornerView = new onepage.views.CornerView({position:'bottomRight', parent:this});
+		this.$el.append(this.bottomRightCornerView.render().el);
 	},
 	dragStart: function(event){
 		this.startPosition = [parseInt(this.$el.css('left')), parseInt(this.$el.css('top'))];
 		this.startMousePosition = [event.pageX, event.pageY];
-
 	},
 	dragDrag: function(event){
 		var mousePosition = [event.pageX, event.pageY];
@@ -134,26 +202,6 @@ onepage.views.BoxView = Backbone.View.extend({
 		return this;
 	},
 
-})
-
-onepage.views.DragHelper = Backbone.View.extend({
-	/*
-	An empty view which is used as a drag helper instead of moving the draggable element
-	*/
-	className:'DragHelper',
-	initialize: function(){
-		_.bindAll(this);
-	},
-	render: function(){
-		this.$el.empty();
-		return this;
-	},
-	offset: function(parentEl){
-		// Returns [x,y] position of this view relative to parentEl
-		var position = this.$el.position();
-		var parentPosition = $(parentEl).position();
-		return [position.left - parentPosition.left, position.top - parentPosition.top]
-	}
 })
 
 onepage.views.HomeView = Backbone.View.extend({

@@ -15,7 +15,9 @@ body {
 	min-height: 1em; min-width: 1em;
 	position: absolute;
 	text-align: center;
-	background-color: #9F9;
+}
+.resizing {
+	background-color: #F9F;
 }
 .boxViewDraggableDiv {
 	width: 100%;
@@ -42,3 +44,13 @@ body {
 }
 .leftBoxViewRail { left: 0; }
 .rightBoxViewRail { right: 0; }
+
+.cornerView {
+	position: absolute;
+	width: 20px; height: 20px;
+	background-color: #0F0;
+}
+.topLeftCornerView { top: 0px; left: 0px; }
+.topRightCornerView { top: 0px; right: 0px; }
+.bottomLeftCornerView { bottom: 0px; left: 0px; }
+.bottomRightCornerView { bottom: 0px; right: 0px; }

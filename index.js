@@ -27,6 +27,7 @@ onepage.activateNav = function(hash){
 
 onepage.views.PageView = Backbone.View.extend({
 	id: 'pageView',
+	className: 'container',
 
 	initialize: function(){
 		this.aboutView = new onepage.views.AboutView();
@@ -45,11 +46,8 @@ onepage.views.HomeView = Backbone.View.extend({
 	id: 'homeView',
 	initialize: function(){
 		_.bindAll(this, 'render');
-	},
-	render: function(){
 		this.$el.append($.el.h1('Home:'));
-		return this;
-	},
+	}
 });
 
 onepage.views.AboutView = Backbone.View.extend({
@@ -57,16 +55,12 @@ onepage.views.AboutView = Backbone.View.extend({
 	id: 'aboutView',
 	initialize: function(){
 		_.bindAll(this, 'render');
-		this.template = $("#aboutTemplate").html();
-	},
-	render: function(){
-		this.$el.html(_.template(this.template, {}));
-		return this;
-	},
+		this.$el.append($.el.h1('About:'));
+	}
 });
 
 $(document).ready(function(){
-	window.pageView = new onepage.views.PageView({el:"#pageView"});
-	window.pageView.render();
+	window.pageView = new onepage.views.PageView();
+	$('#pageView').replaceWith(window.pageView.render().el);
 	Backbone.history.start();
 });

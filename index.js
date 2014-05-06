@@ -34,11 +34,7 @@ onepage.views.PageView = Backbone.View.extend({
 		this.$el.append(this.aboutView.render().el);
 		this.homeView = new onepage.views.HomeView();
 		this.$el.append(this.homeView.render().el);
-	},
-
-	render: function(){
-		return this;
-	},
+	}
 });
 
 onepage.views.HomeView = Backbone.View.extend({
@@ -46,7 +42,6 @@ onepage.views.HomeView = Backbone.View.extend({
 	id: 'homeView',
 	initialize: function(){
 		_.bindAll(this, 'render');
-		this.$el.append($.el.h1('Home:'));
 	}
 });
 
@@ -60,7 +55,11 @@ onepage.views.AboutView = Backbone.View.extend({
 });
 
 $(document).ready(function(){
-	window.pageView = new onepage.views.PageView();
-	$('#pageView').replaceWith(window.pageView.render().el);
-	Backbone.history.start();
+	window.tileView = new penrose.views.TileView({
+		'el':$('#tileView'),
+		'width':$('#pageView').width(),
+		'height':200,
+		'scale':60
+	});
+
 });

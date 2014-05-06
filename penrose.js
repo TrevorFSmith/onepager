@@ -11,6 +11,18 @@ penrose.D2R = Math.PI / 180.0;
 penrose.DartAngles = [36, 72, 36, 216];
 penrose.KiteAngles = [72, 72, 72, 144];
 
+penrose.DefaultColorScheme = [
+	'#17c7d2',	// blue Pantone 319U
+	'#bbdc00',	// green Pantone 389U
+	'#ffdd30',	// yellow Pantone 108U
+	'#ff883c',	// orange Pantone 151U
+	'#f15fa5'	// pink Pantone 225U
+];
+
+penrose.randomInt = function(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 penrose.Shape = function(){
 	/*
 	One of the two tile shapes in the P2 penrose tiling.
@@ -69,9 +81,9 @@ penrose.views.TileView = Backbone.View.extend({
 
 
 		this.shapes = [
-			new penrose.Dart(this.options.scale, 45, 40, 0), 
+			new penrose.Dart(this.options.scale, 40, 40, 0), 
 			new penrose.Kite(this.options.scale, 40, 40, 180),
-			new penrose.Dart(this.options.scale, 85, 60, 0), 
+			new penrose.Dart(this.options.scale, 80, 60, 0), 
 			new penrose.Kite(this.options.scale, 80, 60, 180)
 		];
 		var g = this.svg.selectAll("g").data(this.shapes);
@@ -96,7 +108,10 @@ penrose.views.TileView = Backbone.View.extend({
 				path += " z";
 				return path;
 			})
-			.attr('fill', 'none').attr('stroke', 'blue').attr('stroke-width', '2');
+			.attr('fill', function(){
+				return penrose.DefaultColorScheme[penrose.randomInt(0,penrose.DefaultColorScheme.length - 1)]
+			})
+			.attr('stroke', 'white').attr('stroke-width', '2');
 
 	}
 });

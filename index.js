@@ -58,7 +58,7 @@ $(document).ready(function(){
 	window.tileView = new penrose.views.TileView({
 		'el':$('#tileView'),
 		'width':$('#pageView').width(),
-		'height':200,
+		'height':300,
 		'scale':60
 	});
 

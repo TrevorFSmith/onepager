@@ -204,6 +204,15 @@
 		"image": ["pics/Faraday-public-domain.jpg", "http://en.wikipedia.org/wiki/File:Faraday.png"]
 	},
 	{
+		"date": 6, "month": 6,
+		"name": "Aleksandr Lyapunov",
+		"themes": ["foresight", "codependence"],
+		"patronage": ["home schoolers", "gifted lecturers", "workaholics"],
+		"body": "<p>Lyapunov contributed to our understanding of dynamical systems turbulent liquids and particles under gravity.  He is most famous for the Maximal Lyapunov Exponent which determines a notion of predictability in a dynamical system.</p>",
+		"hashtags": ["Lyapunov"],
+		"image": ["pics/Alexander-Ljapunow-public-domain.jpg", "http://commons.wikimedia.org/wiki/File:Alexander_Ljapunow_jung.jpg"]
+	},
+	{
 		"date": 23, "month": 6,
 		"name": "Alan Turing",
 		"themes": ["unending toil", "self empowerment"],
